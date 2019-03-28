@@ -1,0 +1,42 @@
+容器序列
+list,tuple和collecitons.deque能存放不同类型的数据
+扁平序列
+str,bytes,bytearray,memoryview和array.array只能容纳一种类型.
+容器徐磊存放的是它们所包含的任意类型的对象的引用,
+而扁平序列里存放的是值而不是引用.
+扁平序列其实是一段连续的内存空间.更加紧凑,只能存放诸如字符,字节和数值这种基础类型
+
+可变序列(MutableSequence):list,bytearray,array.array,collections.deque和memoryview
+不可变序列(Sequence):tuple,str和bytes
+
+Python会忽略代码里的[], {}和()中的换行,
+列表推导式不会再有变量泄露的问题
+
+笛卡尔积
+笛卡尔积是一个列表,列表里的元素是由输入的可迭代类型的元素对构成的元组,
+因此笛卡尔积列表的长度等于输入变量的长度的乘积
+colors = ['black', 'white']
+sizes = ['S', 'M', 'L']
+tshirts = [(color, size) for color in colors for size in sizes]
+更换输出顺序只需要调整从句顺序,for循环嵌套顺序一致
+列表推导式-->生成列表
+生成器表达式-->其他类型的序列
+列表推导式可以初始化元组,数组或者其他序列类型,
+但是生成器表达式是更好的选择
+因为生成器表达式遵守了迭代器协议,可以逐个产出元素,而不是建立一个完整的列表,
+然后再把这个列表传递到某个构造函数里.节省了内存
+[] --> ()
+实例2.5
+用生成器表达式初始化元组和数组
+symbols = '$fdj'
+tuple(ord(symbol) for symbol in symbols)
+import array
+array.array('I', (ord(symbol) for symbol in symbols))
+array(...)
+如果生成器表达式是一个函数调用过程中的唯一参数,那么不需要额外用括号围起来
+array的构造方法需要两个参数,因此括号是必须的.array构造方法的第一个参数指定了数组中数字的存储方式
+
+2.3元组不仅仅是不可变的列表
+还可以用于没有字段名的记录
+2.3.1 元组和记录
+元组其实是对数据的记录:
