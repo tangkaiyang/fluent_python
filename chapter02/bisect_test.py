@@ -33,3 +33,4 @@ if __name__ == '__main__':
     print('DEMO:', bisect_fn.__name__)
     print('haystack ->', '  '.join('%2d' % n for n in HAYSTACK))
     demo(bisect_fn)
+    print(HAYSTACK)
