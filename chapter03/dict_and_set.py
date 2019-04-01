@@ -151,7 +151,6 @@ __missing__方法只会被__getitem__调用.
 有时候,希望查询的时候,映射类型里的键统统转换成str.
 """
 
-
 # 示例3-6:当有非字符串的键被查找时,StrKeyDict0是如何在该键不存在的情况下,把它转换为字符串的
 # 通过get(1, 'N/A')将N/A附给不存在的键1,示例3-7实现
 # 如果要自定义一个映射类型,更合适的策略其实是继承collections.UserDict类.
@@ -225,15 +224,21 @@ UserDict并不是dict的子类,但是UserDict有一个叫做data的属性,是dic
 """
 # 示例3.8 无论是添加,更新还是查询操作,StrKeyDict都会把非字符串的键转换为字符串
 import collections
+
+
 class StrKeyDict(collections.UserDict):
     def __missing__(self, key):
         if isinstance(key, str):
             raise KeyError(key)
         return self[str(key)]
+
     def __contains__(self, key):
         return str(key) in self.data
+
     def __setitem__(self, key, item):
         self.data[str(key)] = item
+
+
 # __contains__更简洁.这里可以放心假设所有以及存储的键都是字符串.
 # 因此,只要在self.data上查询就好了,并不需要向StrKeyDict0那样去麻烦self.keys()
 # __setitem__会把所有的键都转换成字符串.由于把具体的实现委托给了self.data属性,
@@ -270,3 +275,123 @@ MappingProxyType.如果给这个类一个映射,它会返回一个只读的映�
 # print(d_proxy)
 # print(d_proxy[2])
 # d_proxy是动态的,对d所作的任何改动都会反馈到它上
+"""
+3.8 集合论
+set,frozenset
+集合的本质是许多唯一对象的聚集.
+集合可以用于去重
+集合中的元素必须是可散列的,set类型本身是不可散列的,但是frozenset可以.
+因此可以创建一个包含不同frozenset的set
+中缀运算符:
+a | b 并集
+a & b 交集
+a - b 差集
+例如,我们有一个电子邮件地址的集合(haystack),还要维护一个较小的电子邮件地址集合(needles),
+然后求出needles中有多少地址也出现在了haystack里
+示例3-10: needles的元素在haystack里出现的次数,两个变量都是set类型
+found = len(needles & haystack)
+示例3-11: needles的元素在haystack里出现的次数
+found = 0
+for n in needles:
+    if n in haystack:
+        found += 1
+3-10比3-11要快一些;3-11可以用在任何迭代对象needles和haystack上,而示例3-10要求两个对象都是集合.
+3-12 可以用在任何可迭代对象上
+found = len(set(needles) & set(haystack))
+found = len(set(needles).intersection(haystack))
+速度极快的查找功能(背后的散列表)
+
+3.8.1 集合字面量
+创建一个空集,set(),不带任何参数,{}是一个空字典
+3.8.2 集合推导(setcomps)
+"""
+# 示例3-13 新建一个Latin-1字符集合,该集合里的每个字符的Unicode名字都有"SIGN"这个单词
+# from unicodedata import name
+# print({chr(i) for i in range(32, 256) if 'SIGN' in name(chr(i), '')})
+"""
+3.8.3 集合的操作
+中缀运算符需要两侧被操作的对象都是集合类型,
+但是其他的所有方法则要求所传入的参数是可迭代对象
+例:相求4个聚合类型a,b,c和d的合集,可以用a.union(b, c, d)
+这里a必须是个set,但是其他可以是任何类型的可迭代对象
+
+3.9 dict和set的背后
+散列表
+3.9.1 一个关于效率的实验
+dict.fromkeys([1, 2, 3], ['one', 'two', 'three']) -->
+{1: ['one', 'two', 'three'], 2: ['one', 'two', 'three'], 3: ['one', 'two', 'three']}
+3.9.2 字典中的散列表
+散列表其实是一个稀疏数组(总是有空白元素的数组称为稀疏数组).
+散列表里的单元通常叫做表元(bucket).
+在dict的散列表中,每个键值对都占用了一个表元,每个表元都有两部分,
+一个是对键的引用,另一个是对值的引用.
+所以所有表元的大小一致,所以可以通过偏移量来读取某个表元.
+因为Python会设法博阿正大概还有三分之一的表元是空的,所以在快要达到这个
+阈值的时候,原有的散列表会被复制到一个更大的空间里面
+如果要把一个对象放入散列表,那么首先要计算这个元素键的散列值.
+hash()
+01.散列值和相等性
+内置的hash()方法可用于所有的内置类型对象.如果是自定义对象调用hash()的话,
+实际上是运行的自定义的__hash__.如果两个对象在比较的时候是相等的,
+那他们的散列值必须相等,都在散列表就不能正常运行了.
+如1==1.0为真,那么它们的散列值相等也为真,但是这两个数字的内部构造完全不一样
+为了让散列值能够胜任散列表索引这一角色,他们必须在索引空间中尽量分散开来.
+这意味着在最理想的状况下,越是相似但不相等的对象,他们散列值的差别应该越大.
+从Python3.3开始,str,bytes和datetime对象的散列值计算过程中,
+多了随机的"加盐"这一步.所加盐值是Python进程内的一个常量,但是每次启动
+Python解释器都会生成一个不同的盐值.
+随机盐值的加入是为了防止DOS攻击而采取的一种安全措施
+02.散列表算法
+插入新值时,Python可能会按照散列表的拥挤程度决定是否要重新分配内存为它扩容.
+如果增加了散列表的大小,那散列值所占的位数和用作索引的位数都会随之增加,这样做的目的是为了减少发生散列冲突的概率.冲突发生几率很低
+
+3.9.3 dict的实现及其导致的结果
+01,键必须是可散列的:
+一个可散列的对象:
+(1)支持hash()函数,并且通过__hash__()方法所得到的的散列值是不变的
+(2)支持通过__eq__()方法来检测相等性
+(3)若a==b为真,则hash(a)==hash(b)也为真
+所有由用户自定义的对象默认都是可散列的,因为他们的散列值由id()来获取,
+而且他们都是不相等的.
+02,字典在内存上的开销巨大
+03,键查询很快
+04,键的次序取决于添加顺序
+添加新键会出现散列冲突
+05,往字典里添加新键可能会改变已有键的顺序
+不要对字典同时进行迭代和修改
+Python3中,.keys(),.items()和.values()方法返回的都是字典视图.更像集合.视图有动态的特性,可以实时反馈字典的变化
+"""
+# 示例3-17 用同样的数据创建了3个字典,唯一的区别就是数据出现的顺序不一样.虽然键的次序是乱的,这3个字典仍然被视作相等的
+# 世界人口数量前10位国家的电话区号
+# DIAL_CODES = [
+#     (85, 'China'),
+#     (91, 'India'),
+#     (1, 'United States'),
+#     (62, 'Indonesia'),
+#     (55, 'Brazil'),
+#     (92, 'Pakistan'),
+#     (880, 'Bangladesh'),
+#     (234, 'Nigeria'),
+#     (7, 'Russia'),
+#     (81, 'Japan'),
+# ]
+# d1 = dict(DIAL_CODES)
+# print('d1:', d1.keys())
+# d2 = dict(sorted(DIAL_CODES))
+# print('d2:', d2.keys())
+# d3 = dict(sorted(DIAL_CODES, key=lambda x: x[1]))
+# print('d3:', d3.keys())
+# assert d1 == d2 and d2 == d3
+
+"""
+3.9.4 set的实现以及导致的结果
+set和frozenset的实现也依赖散列表,但是他们的散列表里存放的只有元素的引用.字典只存放键没有相应的值,字典加上无意义的值当做集合
+集合里的元素必须是可散列的.
+集合很消耗内存.
+可以很高效的判断元素是否存在与某个集合
+元素的次序取决于被添加到集合里的次序
+往集合里添加元素,可能会改变集合里已有元素的次序
+
+3.10 本章小结
+
+"""
