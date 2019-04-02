@@ -434,3 +434,34 @@ GNU/Linux内核不理解Unicode,因此,对任何合理的编码方案来说,
 os模块中的函数,得到字节序列返回值.
 这一特性允许我们处理任何文件名或路径名,不管里面有多少鬼符
 """
+# 示例4-23 把字符串和字节序列参数传给listdir函数得到的结果
+# import os
+# print(os.listdir('.'))
+# print(os.listdir(b'.')) # 参数是字节序列,listdir函数返回的文件名也是字节序列
+"""
+为了便于手动处理字符串或字节序列形式的文件名或路径名,
+os模块提供了特殊的编码和解码函数
+fsencode(filename)
+如果filename是str类型(此外还可能是bytes类型),使用
+sys.getfilesystemencoding()返回的编解码器把filename编码成字节序列:
+否则,返回未经修改的filename字节序列
+fsdecode(filename)
+如果filename是bytes类型(此外还可能是str类型),使用
+sys.getfilesystemencoding()返回的编解码器把fielname解码成字符串;
+否则,返回未经修改的filename字符串
+在Unix衍生平台中,这些函数使用surrogateescape错误处理方式以避免遇到意外字节序列时卡住.
+Windows使用的错误处理方式是strict
+使用surrogateescape处理鬼符
+Python3.1引入的surrogateescape编解码器错误处理方式是处理意外字节序列或未知编码的一种方式,
+这种错误处理方式会把每个无法解码的字节替换成Unicode中U+DC00到U+DCFF之间的码位(Unicode标准把这些码位称为"Low Surrogate Area"),这些码位是保留的,没有分配字符,供应用程序内部使用.
+编码时,这些码位会转换成被替换的字节值
+"""
+# 示例4-24 使用surrogateescape错误处理方式
+# import os
+# print(os.listdir('.'))
+# print(os.listdir(b'.'))
+# pi_name_bytes = os.listdir(b'.')[1]
+# print(pi_name_bytes)
+# pi_name_str = pi_name_bytes.decode('ascii', 'surrogateescape')
+# print(pi_name_str)
+# print(pi_name_str.encode('ascii', 'surrogateescape'))
