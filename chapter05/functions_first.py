@@ -177,16 +177,16 @@ def tag(name, *content, cls=None, **attrs):
         return '\n'.join('<%s%s>%s</%s>' % (name, attr_str, c, name) for c in content)
     else:
         return '<%s%s />' % (name, attr_str)
-# tag函数的调用方式有很多
-print(tag('br'))
-print(tag('p', 'hello'))
-print(tag('p', 'hello', 'world'))
-print(tag('p', 'hello', id=33))
-print(tag('p', 'hello', 'world', cls='sidebar'))
-print(tag(content='testing', name='img'))
-my_tag = {'name': 'img', 'title': 'Sunset Boulevard',
-          'src': 'sunset.jpg', 'cls': 'framed'}
-print(tag(**my_tag))
+# # tag函数的调用方式有很多
+# print(tag('br'))
+# print(tag('p', 'hello'))
+# print(tag('p', 'hello', 'world'))
+# print(tag('p', 'hello', id=33))
+# print(tag('p', 'hello', 'world', cls='sidebar'))
+# print(tag(content='testing', name='img'))
+# my_tag = {'name': 'img', 'title': 'Sunset Boulevard',
+#           'src': 'sunset.jpg', 'cls': 'framed'}
+# print(tag(**my_tag))
 
 """
 仅限关键字参数是Python3新增的特性
@@ -196,4 +196,100 @@ def f(a, *, b):
     return a, b
 f(1, b=2) --> (1, 2)
 注意,仅限关键字参数不一定要有默认值,
+
+5.8 获取关于参数的信息
+函数对象的__defaults__属性,一个元组,保存着定位参数和关键字参数的默认值.
+仅限关键字参数的默认值在__kwdefaults__属性中.
+然而,参数的名称在__code__属性中,它的值是一个code对象引用,自身也有很多属性.
+rfind(str, start, stop)
+rstrip([char])
 """
+# 示例5-16 审查clip函数,查看__defaults__,__code__.co_varnames和__code__.co_argcount的值
+# from clip import clip
+#
+# print(clip.__defaults__)
+# print(clip.__code__)
+# print(clip.__code__.co_varnames)
+# print(clip.__code__.co_argcount)
+"""
+参数名称在__code__.co_varnames中,不过里面还有函数定义体中创建的局部变量.
+因此,参数名称是前N个字符串,N的值由__code__.co_argcount确定.
+这里不包含前缀为*或**的变长参数.
+参数的默认值只能通过他们在__defaults__元组中的位置确定,因此要从后向前扫描才能把参数和默认值对应起来
+使用inspect模块
+"""
+# 示例5-17 提取函数的签名
+# from clip import clip
+# from inspect import signature
+# sig = signature(clip)
+# print(sig)
+# print(str(sig))
+# for name, param in sig.parameters.items():
+#     print(param.kind, ':', name, '=', param.default)
+"""
+inspect.signature函数返回一个inspect.Signature对象,它有一个parameters属性,
+这是一个有序映射,把参数名和inspect.Parameter对象对应起来.
+各个Parameter属性也有自己的属性,例如name,default和kind.
+特殊的inspect._empty值表示没有默认值,考虑到None是有效的默认值
+kind属性的值是_ParameterKind类中的5个值之一,
+POSITIONAL_OR_KEYWORD:可以通过定位参数和关键字参数传入的形参(多数Python函数的参数属于此类)
+VAR_POSITIONAL:定位参数元组
+VAR_KEYWORD:关键字参数字典
+KEYWORD_ONLY:仅限关键字参数(Python3新增)
+POSITIONAL_ONLY:仅限定位参数;
+除了name,default和kind,inspect.Parameter对象还有一个
+annotation(注解)属性,它的值通常是inspect_empty,但是可能包含Python3新的注解句法提供的函数签名元数据
+inspect.Signature对象有个bind方法,它可以把任意个参数绑定到签名的形参上,所以的规则与实参
+到形参的匹配方式一样.框架可以使用这个方法在真正调用函数前验证参数
+"""
+# 实例5-18 把tag函数的前面绑定到一个参数字典上
+# import inspect
+# sig = inspect.signature(tag)
+# my_tag = {'name': 'img', 'title': 'Sunset Boulevard',
+#           'src': 'sunset.jpg', 'cls': 'framed'}
+# bound_args = sig.bind(**my_tag)
+# print(bound_args)
+# for name, value in bound_args.arguments.items():
+#     print(name, '=', value)
+# del my_tag['name']
+# bound_args = sig.bind(**my_tag)
+"""
+5.9 函数注解
+Python3提供了一种句法,用于为函数声明中的参数和返回值符加元数据
+实例5-19 有注解的clip函数
+def clip(text:str, max_len:'int > 0'=80) -> str:
+注解不会做任何处理,只是存储在函数的__annotations__属性(一个字典)
+从函数签名中提取注解
+sig = inspect.signature(func)
+sig.return_annotation
+
+5.10 支持函数式变成的包
+operator
+functools
+5.10.1 operator模块
+为算术运算符提供了对应的函数
+lambda a, b: a*b , range(1, n+1) --> operator.mul, range(1, n+1)
+替代从序列中取出元素或读取对象属性的lambda表达式:
+因此itemgetter和attrgetter其实会自行构建函数
+itemgetter:根据元组的某个字段给元组排序:
+sorted(tuple_list, key=itemgetter(1))
+itemgetter(1, 0) --> 它构建的函数返回提取的值构成的元组
+itemgetter使用[]运算符,不仅支持序列,还支持映射和任何实现__getitem__方法的类
+attrgetter与itemgetter作用类似,它创建的函数根据名称提取对象的属性.
+如果把多个属性传给attrgetter,会返回提取的值构成的元组.
+此外,如果参数中包含.(点号),attrgetter会深入嵌套对象,获取指定的属性.
+
+"""
+
+from collections import namedtuple
+LatLong = namedtuple('LatLong', 'lat long')
+Metropolis = namedtuple('Metropolis', 'name cc pop coord')
+metro_areas = [Metropolis(name, cc, pop, LatLong(lat, long))
+    for name, cc, pop, (lat, long) in metro_data]
+metro_areas[0]
+long=139.691667))
+metro_areas[0].coord.lat
+from operator import attrgetter
+name_lat = attrgetter('name', 'coord.lat')
+for city in sorted(metro_areas, key=attrgetter('coord.lat')):
+    print(name_lat(city))
