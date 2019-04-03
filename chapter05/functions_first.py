@@ -263,7 +263,7 @@ def clip(text:str, max_len:'int > 0'=80) -> str:
 sig = inspect.signature(func)
 sig.return_annotation
 
-5.10 支持函数式变成的包
+5.10 支持函数式编程的包
 operator
 functools
 5.10.1 operator模块
@@ -280,16 +280,90 @@ attrgetter与itemgetter作用类似,它创建的函数根据名称提取对象�
 此外,如果参数中包含.(点号),attrgetter会深入嵌套对象,获取指定的属性.
 
 """
+# 示例5-24 定义一个namedtuple,名为metro_data,演示使用attrgetter处理它
 
-from collections import namedtuple
-LatLong = namedtuple('LatLong', 'lat long')
-Metropolis = namedtuple('Metropolis', 'name cc pop coord')
-metro_areas = [Metropolis(name, cc, pop, LatLong(lat, long))
-    for name, cc, pop, (lat, long) in metro_data]
-metro_areas[0]
-long=139.691667))
-metro_areas[0].coord.lat
-from operator import attrgetter
-name_lat = attrgetter('name', 'coord.lat')
-for city in sorted(metro_areas, key=attrgetter('coord.lat')):
-    print(name_lat(city))
+# metro_data = [
+#     ('Tokyo', 'JP', 36.933, (35.689722, 139.691667)),
+#     ('Delhi NCR', 'IN', 21.935, (28.613889, 77.208889)),
+#     ('Mexico City', 'MX', 20.142, (19.433333, -99.133333)),
+#     ('New York-Newark', 'US', 20.104, (40.808611, -74.020386)),
+#     ('Sao Paulo', 'BR', 19.649, (-23.547778, -46.635833)),
+#     ]
+# from operator import itemgetter, attrgetter
+# for city in sorted(metro_data, key=itemgetter(1)):
+#     print(city)
+# from collections import namedtuple
+# LatLong = namedtuple('LatLong', 'lat long')  # namedtuple定义的LatLong类,lat,long是属性名,字符串组成的可迭代对象,或者由空格隔开的字段名组成的字符串
+# Metropolis = namedtuple('Metropolis', 'name cc pop coord')
+# metro_areas = [Metropolis(name, cc, pop, LatLong(lat, long)) for name, cc, pop, (lat, long) in metro_data]
+# print(metro_areas[0])
+# print(metro_areas[0].coord.lat)
+# name_lat = attrgetter('name', 'coord.lat')
+# for city in sorted(metro_areas, key=attrgetter('coord.lat')):
+#     print(name_lat(city))
+
+# 下面是operator模块中定义的部分函数
+# import operator
+# print([name for name in dir(operator) if not name.startswith('__')])
+# 类似iadd,对应的是增量赋值运算符(如+=, &=等),如果第一个参数是可变的,那么这些运算符就会就地修改它;否则作用于不带i的函数一样,直接返回运算结果.
+# 实例5-25 operator.methodcaller()使用实例:第二个测试展示绑定额外参数的方式
+# from operator import methodcaller
+# s = 'The time has come'
+# upcase = methodcaller('upper')
+# print(upcase(s)) # 相当于str.upper()
+# hiphenate = methodcaller('replace', ' ', '-')
+# print(hiphenate(s)) # 相当于str.replace(' ', '-')
+# print(s.replace(' ', '-'))
+"""
+methodcaller还可以冻结某些参数,也就是
+部分应用(partial application),这与
+functools.partial函数的作用类似
+5.10.2 使用functools.partial冻结参数
+partial及其变体,partialmethod
+functools.partial这个高阶函数用于部分应用一个函数.
+部分应用是指,基于一个函数创建一个新的可调用对象,把原函数的某些参数固定.
+使用这个函数可以把接受一个或多个参数的函数改编成需要回调的API,这样参数更少
+"""
+# 示例5-26 使用partial把一个两参数函数改编成需要单参数的可调用对象
+from functools import partial
+from operator import mul
+# triple = partial(mul, 3) # 使用mul创建triple函数,把第一个定位参数定为3
+# print(triple(7))
+# print(list(map(triple, range(1, 10)))) # 在map中使用triple;在这个示例中不能用mul(需要两个参数)
+# 示例5-27 使用partial构建一个便利的Unicode规范化函数
+import unicodedata, functools
+# nfc = functools.partial(unicodedata.normalize, 'NFC')
+# s1 = 'café'
+# s2 = 'cafe\u0301'
+# print(s1, s2)
+# print(s1 == s2)
+# print(nfc(s1), nfc(s2))
+# print(nfc(s1) == nfc(s2))
+# partial的第一个参数是一个可调用对象,后面跟着任意个要绑定的定位参数和关键字参数
+# 示例5-28 把partial应用到tag函数上
+# tag
+# picture = partial(tag, 'img', cls='pic-frame')
+# print(picture(src='wumpus.jpeg'))
+# print(picture)
+# print(picture.func)
+# print(picture.args)
+# print(picture.keywords)
+"""
+functools.partialmethod函数(Python3.4新增)的作用于partial一样,不过是用于处理方法的.
+functools.lru_cache,会做备忘(memoization),自动优化措施,会存储耗时的函数都调用结果,避免重复计算
+
+5.11 本章小结
+本章的目标是探讨Python函数的一等本性.
+这意味着,我们可以把函数赋值给变量,传给其他函数,存储在数据结构中,以及访问函数的属性,供框架和一些工具使用.
+高阶函数是函数式编程的重要组成部分,即使现在不像以前那样经常使用map,filter和reduce函数了,但是还有
+列表推导(以及类似的结构,如生成器表达式)以及sum,all和any等内置的归约函数.
+Python中常用的高阶函数有内置函数sorted,min,max和functools.partial
+Python有7种可调用对象,从lambda表达式创建的简单函数到实现__call__方法的类实例.这些可调用对象都能通过内置的
+callable()函数检测.每一种可调用对象都支持使用相同的丰富句法声明形式参数,包括
+仅限关键字参数和注解--二者都是Python3引入的新特性
+Python函数及其注解有丰富的属性,在inspect模块的帮助下,可读取他们
+例如,Signature.bind方法使用灵活的规则把实参绑定到形参上,这与Python使用的规则一样
+介绍了operator模块中的一些函数,以及
+functools.partial函数,有了这些函数,函数式编程就不太需要功能有限的lambda表达式了
+异步API:promise对象,期物(future)和deferred对象
+"""
