@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter06/command_mode.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter06/promotions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter07/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter07/closure_decorator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter07/registration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter06/func_design.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter06/func_design.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter06/func_design_mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter06/func_design_mode.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,41 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter06/func_design.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2014">
-              <caret line="107" column="48" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
-              <folding>
-                <element signature="e#346#381#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter06/func_design_mode.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="129" column="29" selection-start-line="129" selection-start-column="29" selection-end-line="129" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/chapter06/command_mode.py">
+        <entry file="file://$PROJECT_DIR$/chapter07/closure_decorator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter06/promotions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state relative-caret-position="477">
+              <caret line="175" column="16" lean-forward="true" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -95,12 +63,13 @@
         <option value="$PROJECT_DIR$/chapter06/promotions.py" />
         <option value="$PROJECT_DIR$/chapter06/func_design_mode.py" />
         <option value="$PROJECT_DIR$/chapter06/command_mode.py" />
+        <option value="$PROJECT_DIR$/chapter07/registration.py" />
+        <option value="$PROJECT_DIR$/chapter07/closure_decorator.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="886" />
-    <option name="y" value="20" />
+    <option name="x" value="848" />
     <option name="width" value="1020" />
     <option name="height" value="1040" />
   </component>
@@ -108,7 +77,25 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+              <item name="chapter07" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -134,7 +121,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.func_design_mode">
+  <component name="RunManager" selected="Python.closure_decorator">
+    <configuration name="closure_decorator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fluent_python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter07" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter07/closure_decorator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="func_design" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -198,7 +206,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="text_bytearray" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="registration" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -206,11 +214,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter04" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter07" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter04/text_bytearray.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter07/registration.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -219,31 +227,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Doctests in normeq" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
-      <module name="fluent_python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter04" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter04/normeq.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.closure_decorator" />
+        <item itemvalue="Python.registration" />
         <item itemvalue="Python.func_design_mode" />
         <item itemvalue="Python.func_design" />
         <item itemvalue="Python.functions_first" />
-        <item itemvalue="Python.text_bytearray" />
-        <item itemvalue="Python tests.Doctests in normeq" />
       </list>
     </recent_temporary>
   </component>
@@ -295,21 +285,20 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="886" y="20" width="1020" height="1040" extended-state="0" />
-    <editor active="true" />
+    <frame x="848" y="0" width="1020" height="1040" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2474359" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24643585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49683544" visible="true" weight="0.27783903" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683544" weight="0.37706727" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3880926" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683544" weight="0.28" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683544" weight="0.27894157" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5031645" side_tool="true" weight="0.23428571" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49841774" weight="0.47519293" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -506,13 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter06/promotions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chapter06/func_design_mode.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -524,6 +506,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter06/promotions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python37/Lib/dis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="176" column="32" lean-forward="true" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter07/registration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter07/closure_decorator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="175" column="16" lean-forward="true" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
         </state>
       </provider>
     </entry>
