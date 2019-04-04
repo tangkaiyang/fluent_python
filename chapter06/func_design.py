@@ -89,3 +89,21 @@ class LargeOrderPromo(Promotion):  # 第三个具体策略
         if len(distinct_items) >= 10:
             return order.total() * .07
         return 0
+# Promotion定义为抽象基类(Abstract Base Class, ABC),为了使用@abstractmethod装饰器,从而明确表明所用的模式
+# Python3.4中,声明抽象基类最简单的方式是子类化abc.ABC
+# Python3.0到Python3.3,class Promotion(metaclass=ABCMeta)
+# 示例6-2 使用不同促销折扣的Order类示例
+joe = Customer('John Doe', 0)
+ann = Customer('Ann Smith', 1000)
+cart = [LineItem('banana', 4, .5),
+        LineItem('apple', 10, 1.5),
+        LineItem('watermelon', 5, 5.0)]
+print(Order(joe, cart, FidelityPromo()))
+print(Order(ann, cart, FidelityPromo()))
+banana_cart = [LineItem('banana', 30, .5),
+               LineItem('apple', 10, 1.5)]
+print(Order(joe, banana_cart, BulkItemPromo()))
+long_order = [LineItem(str(item_code), 1, 1.0)
+              for item_code in range(10)]
+print(Order(joe, long_order, LargeOrderPromo()))
+print(Order(joe, cart, LargeOrderPromo()))
