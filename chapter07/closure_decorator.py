@@ -35,7 +35,6 @@ target = decorate(target)
 上述两个片段代码执行完毕后得到的target不一定是原来那个target函数,而是decorate(target)返回的函数
 """
 
-
 # 实例7-1 确认被装饰的函数会被替换,装饰器通常把函数替换成另一个函数
 # def deco(func):
 #     def inner():
@@ -391,27 +390,48 @@ f = d1(d2(f))
 为clock装饰器添加一个功能:让用户传入一个格式字符串,控制被装饰函数的输出
 """
 # 示例7-25 clockdeco.py模块:参数和clock装饰器
-import time
-from clockdeco import clock
-DEFAULT_FMT = '[{elapsed:0.8f}s] {name}({args}) -> {result}'
-def clock(fmt=DEFAULT_FMT):
-    def decorate(func):
-        def clocked(*_args):
-            t0 = time.perf_counter()
-            _result = func(*_args)
-            elapsed = time.perf_counter() - t0
-            name = func.__name__
-            args = ', '.join(repr(arg) for arg in _args)
-            result = repr(_result)
-            print(fmt.format(**locals()))
-            return _result
-        return clocked
-    return decorate
+# import time
+# from clockdeco import clock
+#
+# DEFAULT_FMT = '[{elapsed:0.8f}s] {name}({args}) -> {result}'
+#
+#
+# def clock(fmt=DEFAULT_FMT):
+#     def decorate(func):
+#         def clocked(*_args):
+#             t0 = time.perf_counter()
+#             _result = func(*_args)
+#             elapsed = time.perf_counter() - t0
+#             name = func.__name__
+#             args = ', '.join(repr(arg) for arg in _args)
+#             result = repr(_result)
+#             print(fmt.format(**locals()))  # 使用**locals()是为了在fmt中引用clocked的局部变量
+#             return _result
+#
+#         return clocked
+#
+#     return decorate
+#
+#
+# if __name__ == '__main__':
+#     # @clock()
+#     # @clock('{name}: {elapsed}s')
+#     @clock('{name}({args}) dt={elapsed:0.3f}s')
+#     def snooze(seconds):
+#         time.sleep(seconds)
+#
+#
+#
+#     for i in range(3):
+#         snooze(.123)
+"""
+工业级装饰器技术
+装饰器最好通过实现__call__方法的类实现,不应该像本章的实例那样通过函数实现
+7.11 本章小结
+高级的Python框架中有注册装饰器的用武之地
+参数化装饰器基本上都涉及至少两层嵌套函数,如果想使用@functools.wraps生成装饰器,
+为高级技术提供更好的支持,嵌套层级可能还会更深,
+functools模块中两个出色的函数装饰器@lru_cache()和@singledispatch
+区分导入时和运行时,变量作用域,闭包和新增的nonlocal声明.
 
-
-if __name__ == '__main__':
-    @clock()
-    def snooze(seconds):
-        time.sleep(seconds)
-    for i in range(3):
-        snooze(.123)
+"""
