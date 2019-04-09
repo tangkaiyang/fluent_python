@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter10/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter10/seq_hash_slice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter10/vector_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter10/seq_hash_slice.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter10/seq_hash_slice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter10/vector_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter10/vector_v1.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,20 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chapter10/seq_hash_slice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="517">
+              <caret line="199" selection-start-line="199" selection-end-line="199" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter10/vector_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+            <state relative-caret-position="294">
+              <caret line="124" column="22" lean-forward="true" selection-start-line="124" selection-start-column="22" selection-end-line="124" selection-end-column="22" />
+              <folding>
+                <element signature="e#163#186#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,8 +83,8 @@
         <option value="$PROJECT_DIR$/chapter09/vector2d_v0.py" />
         <option value="$PROJECT_DIR$/chapter09/Python_style_object.py" />
         <option value="$PROJECT_DIR$/chapter10/vector2d_v3.py" />
-        <option value="$PROJECT_DIR$/chapter10/seq_hash_slice.py" />
         <option value="$PROJECT_DIR$/chapter10/vector_v1.py" />
+        <option value="$PROJECT_DIR$/chapter10/seq_hash_slice.py" />
       </list>
     </option>
   </component>
@@ -147,7 +151,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Python_style_object">
+  <component name="RunManager" selected="Python.seq_hash_slice">
     <configuration name="Python_style_object" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,27 +186,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter07/closure_decorator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="func_design_mode" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fluent_python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter06" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter06/func_design_mode.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -253,13 +236,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="seq_hash_slice" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fluent_python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter10" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter10/seq_hash_slice.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.seq_hash_slice" />
         <item itemvalue="Python.Python_style_object" />
         <item itemvalue="Python.object_reference_mutable_recycle" />
         <item itemvalue="Python.closure_decorator" />
         <item itemvalue="Python.registration" />
-        <item itemvalue="Python.func_design_mode" />
       </list>
     </recent_temporary>
   </component>
@@ -311,14 +315,14 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="935" y="0" width="978" height="1040" extended-state="0" />
+    <frame x="760" y="0" width="783" height="832" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24468085" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24364123" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683544" weight="0.31863284" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683544" weight="0.31857142" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3880926" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -496,13 +500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/collections/__init__.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chapter05/clip.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -560,7 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/builtins.py" />
     <entry file="file://$PROJECT_DIR$/chapter07/clockdeco.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -577,16 +573,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter08/object_reference_mutable_recycle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4368" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-516756811/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="2467" column="8" selection-start-line="2467" selection-start-column="8" selection-end-line="2467" selection-end-column="8" />
+        <state relative-caret-position="138">
+          <caret line="245" column="21" selection-start-line="245" selection-start-column="21" selection-end-line="245" selection-end-column="21" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-516756811/builtins.py" />
     <entry file="file://$PROJECT_DIR$/chapter09/Python_style_object.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
@@ -604,17 +596,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter10/seq_hash_slice.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/collections/__init__.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        <state relative-caret-position="152">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-762">
+          <caret line="3885" column="8" selection-start-line="3885" selection-start-column="8" selection-end-line="3885" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter10/vector_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        <state relative-caret-position="294">
+          <caret line="124" column="22" lean-forward="true" selection-start-line="124" selection-start-column="22" selection-end-line="124" selection-end-column="22" />
+          <folding>
+            <element signature="e#163#186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter10/seq_hash_slice.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
         </state>
       </provider>
     </entry>
