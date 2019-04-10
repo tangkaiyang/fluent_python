@@ -46,7 +46,12 @@ class Vector:
         #     if a != b:
         #         return False
         # return True
-        return len(self) == len(other) and all(a == b for a, b in zip(self, other))
+        # return len(self) == len(other) and all(a == b for a, b in zip(self, other))
+        if isinstance(other, Vector):
+            return (len(self) == len(other) and
+                    all(a == b for a, b in zip(self, other)))
+        else:
+            return NotImplemented
 
     def __abs__(self):
         return math.sqrt(sum(x * x for x in self))
@@ -108,7 +113,7 @@ class Vector:
         return (self.angle(n) for n in range(1, len(self)))
 
     def __format__(self, fmt_spec=''):
-        if fmt_spec.endswith('h'): # 超球面坐标
+        if fmt_spec.endswith('h'):  # 超球面坐标
             fmt_spec = fmt_spec[:-1]
             coords = itertools.chain([abs(self)], self.angles())
             outer_fmt = '<{}>'
@@ -124,3 +129,38 @@ class Vector:
         typecode = chr(octets[0])
         memv = memoryview(octets[1:]).cast(typecode)
         return cls(memv)
+
+    def __abs__(self):
+        return math.sqrt(sum(x * x for x in self))
+
+    def __neg__(self):
+        return Vector(-x for x in self)
+
+    def __pos__(self):
+        return Vector(self)
+
+    def __add__(self, other):
+        try:
+            pairs = itertools.zip_longest(self, other, fillvalue=0.0)
+            return Vector(a + b for a, b in pairs)
+        except TypeError:
+            return NotImplemented
+
+    def __radd__(self, other):
+        return self + other
+
+    def __mul__(self, scalar):
+        if isinstance(scalar, numbers.Real):
+            return Vector(n * scalar for n in self)
+        else:
+            return NotImplemented
+
+    def __rmul__(self, scalar):
+        return self * scalar
+
+    def __ne__(self, other):
+        eq_result = self == other
+        if eq_result is NotImplemented:
+            return NotImplemented
+        else:
+            return not eq_result
