@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter13/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter13/vector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter13/第13章正确重载运算符.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter13/bingoaddable.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter10/vector_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter10/vector_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter13/第13章正确重载运算符.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chapter13/第13章正确重载运算符.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +18,30 @@
         <entry file="file://$PROJECT_DIR$/chapter13/第13章正确重载运算符.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="617">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
+              <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter13/bingoaddable.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+              <folding>
+                <element signature="e#167#183#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter11/bingo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-91">
+              <folding>
+                <element signature="e#163#176#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -29,10 +50,7 @@
         <entry file="file://$PROJECT_DIR$/chapter13/vector.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="498">
-              <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
-              <folding>
-                <element signature="e#163#186#0" expanded="true" />
-              </folding>
+              <caret line="159" selection-start-line="159" selection-end-line="159" />
             </state>
           </provider>
         </entry>
@@ -52,7 +70,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ll.py" />
         <option value="$PROJECT_DIR$/chapter01/python_cards.py" />
         <option value="$PROJECT_DIR$/chapter01/my_vector.py" />
         <option value="$PROJECT_DIR$/chapter02/tuple_as_record.py" />
@@ -102,6 +119,7 @@
         <option value="$PROJECT_DIR$/chapter12/12-8.py" />
         <option value="$PROJECT_DIR$/chapter12/第12章继承的优缺点.txt" />
         <option value="$PROJECT_DIR$/chapter13/vector.py" />
+        <option value="$PROJECT_DIR$/chapter13/bingoaddable.py" />
         <option value="$PROJECT_DIR$/chapter13/第13章正确重载运算符.txt" />
       </list>
     </option>
@@ -115,30 +133,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter12" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter13" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -336,6 +331,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="716" y="0" width="816" height="832" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24358974" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -361,13 +357,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="bisect" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chapter03/dict_and_set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="395" selection-start-line="395" selection-end-line="395" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Anaconda3/Lib/logging/__init__.py" />
     <entry file="file://$PROJECT_DIR$/chapter03/zen.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -552,7 +541,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter11/tombolist.py" />
     <entry file="file://$PROJECT_DIR$/chapter11/lotto.py" />
-    <entry file="file://$PROJECT_DIR$/chapter11/bingo.py" />
     <entry file="file://D:/Python/Python37/Lib/random.py" />
     <entry file="file://$PROJECT_DIR$/chapter11/frenchdeck2.py" />
     <entry file="file://$PROJECT_DIR$/chapter12/第12章继承的优缺点.txt">
@@ -614,9 +602,25 @@
     <entry file="file://$PROJECT_DIR$/chapter13/vector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
-          <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter11/bingo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91">
           <folding>
-            <element signature="e#163#186#0" expanded="true" />
+            <element signature="e#163#176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter13/bingoaddable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+          <folding>
+            <element signature="e#167#183#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -624,7 +628,7 @@
     <entry file="file://$PROJECT_DIR$/chapter13/第13章正确重载运算符.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="617">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+          <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
         </state>
       </provider>
     </entry>
