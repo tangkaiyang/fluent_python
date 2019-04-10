@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter11/bingo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter11/frenchdeck2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter11/lotto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter11/tombola.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter11/tombola_runner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter11/tombolist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/12-1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/12-2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/12-5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/12-6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/12-7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/12-8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/diamond.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter12/第12章继承的优缺点.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter11/protocol_to_abc.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter11/protocol_to_abc.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,76 +23,73 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/chapter11/protocol_to_abc.py">
+        <entry file="file://$PROJECT_DIR$/chapter12/第12章继承的优缺点.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="306" lean-forward="true" selection-start-line="306" selection-end-line="306" />
-              <folding>
-                <element signature="e#7457#7484#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="767">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter11/tombolist.py">
+        <entry file="file://$PROJECT_DIR$/chapter12/12-8.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-              <folding>
-                <element signature="e#164#192#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="295">
+              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter11/lotto.py">
+        <entry file="file://$PROJECT_DIR$/chapter12/12-7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-              <folding>
-                <element signature="e#160#173#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="209">
+              <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter11/bingo.py">
+        <entry file="file://$PROJECT_DIR$/chapter12/12-6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-              <folding>
-                <element signature="e#163#176#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="209">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/Python/Python37/Lib/random.py">
+        <entry file="file://$PROJECT_DIR$/chapter12/12-5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12483">
-              <caret line="666" column="6" selection-start-line="666" selection-start-column="6" selection-end-line="666" selection-end-column="6" />
+            <state relative-caret-position="304">
+              <caret line="16" column="18" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="16" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter11/frenchdeck2.py">
+        <entry file="file://$PROJECT_DIR$/chapter12/diamond.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="33" column="93" selection-start-line="33" selection-start-column="93" selection-end-line="33" selection-end-column="93" />
+            <state relative-caret-position="276">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter11/tombola.py">
+        <entry file="file://$PROJECT_DIR$/chapter12/12-2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="33" column="61" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
+            <state relative-caret-position="380">
+              <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter12/12-1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -152,6 +150,14 @@
         <option value="$PROJECT_DIR$/chapter11/tombola_test" />
         <option value="$PROJECT_DIR$/chapter11/tombola_runner.py" />
         <option value="$PROJECT_DIR$/chapter11/protocol_to_abc.py" />
+        <option value="$PROJECT_DIR$/chapter12/12-1.py" />
+        <option value="$PROJECT_DIR$/chapter12/12-2.py" />
+        <option value="$PROJECT_DIR$/chapter12/12-5.py" />
+        <option value="$PROJECT_DIR$/chapter12/diamond.py" />
+        <option value="$PROJECT_DIR$/chapter12/12-6.py" />
+        <option value="$PROJECT_DIR$/chapter12/12-7.py" />
+        <option value="$PROJECT_DIR$/chapter12/12-8.py" />
+        <option value="$PROJECT_DIR$/chapter12/第12章继承的优缺点.txt" />
       </list>
     </option>
   </component>
@@ -164,7 +170,25 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+              <item name="chapter12" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -190,8 +214,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in tombola_runner.py">
-    <configuration name="Python_style_object" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.12-8">
+    <configuration name="12-5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -199,11 +223,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter09" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter12" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter09/Python_style_object.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter12/12-5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -212,7 +236,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="object_reference_mutable_recycle" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="12-6" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -220,11 +244,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter08" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter12" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter08/object_reference_mutable_recycle.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter12/12-6.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -233,7 +257,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="protocol_to_abc" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="12-7" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -241,11 +265,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter11" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter12" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter11/protocol_to_abc.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter12/12-7.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -254,7 +278,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="seq_hash_slice" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="12-8" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -262,11 +286,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter10" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter12" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter10/seq_hash_slice.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter12/12-8.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -275,28 +299,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in tombola_runner.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="diamond" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter11" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter12" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/chapter11/tombola_runner.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter12/diamond.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in tombola_runner.py" />
-        <item itemvalue="Python.protocol_to_abc" />
-        <item itemvalue="Python.seq_hash_slice" />
-        <item itemvalue="Python.Python_style_object" />
-        <item itemvalue="Python.object_reference_mutable_recycle" />
+        <item itemvalue="Python.12-8" />
+        <item itemvalue="Python.12-7" />
+        <item itemvalue="Python.12-6" />
+        <item itemvalue="Python.12-5" />
+        <item itemvalue="Python.diamond" />
       </list>
     </recent_temporary>
   </component>
@@ -355,14 +385,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="895" y="0" width="1019" height="1040" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24364123" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24362895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683544" weight="0.4707828" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49683544" weight="0.28445426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3880926" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -381,53 +410,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="bisect" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chapter02/array_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="29" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="29" />
-          <folding>
-            <element signature="e#234#257#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter02/memoryview_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter02/floats.bin">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="19">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter02/deque_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter02/数据类型.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="369" column="25" selection-start-line="369" selection-start-column="25" selection-end-line="369" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter02/floats-10M-lines.txt" />
-    <entry file="file://$PROJECT_DIR$/chapter02/numpy_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Untitled.ipynb" />
     <entry file="file://$USER_HOME$/Untitled1.ipynb" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/typing.pyi">
       <provider selected="true" editor-type-id="text-editor">
@@ -612,50 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter11/tombolist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-          <folding>
-            <element signature="e#164#192#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter11/lotto.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-          <folding>
-            <element signature="e#160#173#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter11/bingo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding>
-            <element signature="e#163#176#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python37/Lib/random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12483">
-          <caret line="666" column="6" selection-start-line="666" selection-start-column="6" selection-end-line="666" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter11/frenchdeck2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="93" selection-start-line="33" selection-start-column="93" selection-end-line="33" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chapter11/tombola.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -680,10 +618,110 @@
     <entry file="file://$PROJECT_DIR$/chapter11/protocol_to_abc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="819">
-          <caret line="306" lean-forward="true" selection-start-line="306" selection-end-line="306" />
+          <caret line="306" column="14" selection-start-line="306" selection-start-column="14" selection-end-line="306" selection-end-column="14" />
           <folding>
             <element signature="e#7457#7484#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter11/tombolist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding>
+            <element signature="e#164#192#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter11/lotto.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+          <folding>
+            <element signature="e#160#173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter11/bingo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <element signature="e#163#176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python37/Lib/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="666" column="6" selection-start-line="666" selection-start-column="6" selection-end-line="666" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter11/frenchdeck2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="33" column="93" selection-start-line="33" selection-start-column="93" selection-end-line="33" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/12-2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/12-1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/12-5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/12-6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/12-7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/diamond.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/12-8.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter12/第12章继承的优缺点.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>

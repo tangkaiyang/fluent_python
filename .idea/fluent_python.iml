@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/chapter09" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chapter10" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chapter11" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter12" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
