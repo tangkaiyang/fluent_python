@@ -33,6 +33,8 @@ for循环
 案例分析:在一个数据库转换工具中使用生成器函数处理大型数据集
 为什么生成器和协程看似相同,实则差别很大,不能混淆
 
+
+
 iter(...)函数如何把序列变得可以迭代
 14.1 Sentence类第1版:单词序列
 实现一个Sentence类,以此打来探索可迭代对象的旅程.
@@ -40,3 +42,282 @@ iter(...)函数如何把序列变得可以迭代
 第1版要实现序列协议,这个类的对象可以迭代,因为所有序列都可以迭代
 示例14-1 定义一个Sentence类,通过索引从文本中提取单词
 示例14-1 sentence.py:把句子划分为单词序列
+序列协议__len__,__getitem__
+reprlib.repr这个实用函数用于生成大型数据结构的简略字符串表示形式
+示例14-2 测试Sentence实例能否迭代
+
+序列可迭代原因:iter函数
+计时器需要迭代对象x时,会自动调用iter(x)
+内置的iter函数有以下作用
+1)检查对象是否实现了__iter__方法,如果实现了就调用它,获取一个迭代器
+2)如果没有实现__iter__方法,但是实现了__getitem__方法,Python会创建一个迭代器,尝试按顺序(从索引0开始)获取元素
+3)如果尝试失败,Python会抛出TypeError异常,通常会提示"C object is not iterable"(C对象不可迭代),其中C是目标对象所属的类
+任何Python序列都可迭代的原因是,他们都实现了__getitem__方法.
+其实,标准的序列也都实现了__iter__方法,因此你也应该这么做.
+之所以对__getitem__方法做特殊处理,是为了向后兼容,而未来可能不会再这么做
+这是鸭子类型(duck typing)的极端形式:不仅要实现特殊的__iter__方法,还要实现__getitem__方法,而且__getitem__方法的参数
+是从0开始的整数(int),这样才认为对象是可迭代的.
+在白鹅类型(goose-typing)理论中,可迭代对象的定义简单一些,不过没那么灵活:如果实现了__iter__方法,
+那么就认为对象是可迭代的.此时,不需要创建子类,也不用注册,因为abc.Iterable类实现了__subclasshook__方法
+class Foo:
+    def __iter__(self):
+    pass
+from collections import abc
+issubclass(Foo, abc.Iterable)
+True
+f = foo()
+isinstance(f, abc.Iterable)
+True
+虽然Sentence类是可以迭代的,但却无法通过issubclass(Sentence, abc.Iterable)测试
+从Python3.4开始,检查对象x能否迭代,最准确的方法是:
+调用iter(x)函数,如果不可迭代,再处理TypeError异常.
+这比使用isinstance(x, abc.Iterable)更准确,
+因为iter(x)函数会考虑到遗留的__getitem__方法,而abc.Iterable类则不考虑
+迭代对象之前显式检查对象是否可迭代或许没有必要,毕竟尝试迭代不可迭代的对象时,
+Python抛出的异常信息很明确:TypeError: 'C' object is not iterable
+如果除了抛出TypeError异常之外还要做进一步的处理,可以使用try/except块,而无需显式检查
+如果要保存对象,等以后再迭代,或许可以显式检查,因为这种情况可能需要尽早捕获错误
+
+
+可迭代的对象和迭代器之间的关系
+14.2 可迭代的对象与迭代器的对比
+可迭代的对象
+使用iter内置函数可以获取迭代器的对象.如果对象实现了能返回迭代器的__iter__方法,那么对象就是可迭代的.
+序列都可以迭代;实现了__getitem__方法,而且其参数是从零开始的索引,这种对象也可以迭代
+可迭代的对象和迭代器之间的关系:Python从可迭代的对象中获取迭代器
+StopIteration异常表明迭代器到头了.Python语言内部会处理for循环和其他迭代上下文(如列表推导,元组拆包,等等)中的StopIteration异常
+标准的迭代器接口有两个方法
+__next__:返回下一个可用的元素,如果没元素了,抛出StopIteration异常
+__iter__:返回self,以便在应该使用可迭代对象的地方使用迭代器,例如在for循环中
+这个接口在collections.abc.Iterator抽象类中制定.这个类定义了__next__抽象方法,而且继承自Iterable类;
+__iter__抽象方法则在Iterable类中定义
+Iterable和Iterator抽象基类.
+具体的Iterable.__iter__方法应该返回一个Iterator实例.
+具体的Iterator类必须实现__next__方法.Iterator.__iter__方法直接返回实例本身
+Iterator抽象基类实现__iter__方法的方式是返回实例本身(return self).这样,在需要可迭代对象的地方可以使用迭代器
+在Python3中,Iterator抽象基类定义的抽象方法是it.__next__(),而在Python2中是it.next().
+我们应该避免直接调用特殊方法,使用next(it)即可,这个内置的函数在Python2和Python3中都能使用
+
+Iterators in Python aren't a matter of type bu of protocol.
+A large and changing number of builtin types implement *some* flavor of iterator.
+Don't check the type!
+Use hasattr to check for both "__iter__" and "__next__" attributes instead
+其实,这就是abc.Iterator抽象基类中的__subclasshook__方法的作用
+检查对象x是否为迭代器最好的方式是调用isinstance(x, abc.Iterator).
+得益于Iterator.__subclasshook__方法,即使对象x所属的类不是Iterator类的真实子类或虚拟子类,也能这样检查
+因为迭代器只需__next__和__iter__两个方法,所以除了调用next()方法,以及捕获StopIteration异常之外,
+没有方法检查是否还有遗留的元素.此外,也没用办法"还原"迭代器.如果想再次迭代,那就要调用iter(...),
+传入之前构建迭代器的可迭代对象.传入迭代其本身没用,因为前面说过Iterator.__iter__方法的实现方式是返回实例本身,
+所以传入迭代器无法还原已经耗尽的迭代器
+
+迭代器:迭代器是这样的对象:实现了无参数的__next__方法,返回序列中的下一个元素;如果没有元素了,那么就抛出StopIteration异常.
+Python中的迭代器还实现了__iter__方法,因此,迭代器也可以迭代.
+因为内置的iter(...)函数会对序列做特殊处理,
+
+
+实现标准的可迭代协议
+14.3 Sentence类第2版:典型的迭代器
+实现典型的迭代器设计模式.
+这不符合Python的习惯做法,后面重构时会说明原因.
+不过这一版能明确可迭代的集合和迭代器对象之间的关系
+示例14-4中定义的Sentence类可以迭代,因为它实现了特殊的__iter__方法,构建并返回一个SentenceIterator实例.
+示例14-4 sentence_iter.py:使用迭代器模式实现Sentence类
+其中SentenceIterator类的大多数代码都在处理迭代器的内部状态
+
+一个看似合理实则错误的实现捷径
+把Sentence变成迭代器:坏主意
+构建可迭代的对象和迭代器时经常会出现错误,原因是混淆了二者.
+可迭代的对象有个__iter__方法,每次都是实例化一个新的迭代器;
+而迭代器要实现__next__方法,返回单个元素,此外还要实现__iter__方法,返回迭代器本身
+因此,迭代器可以迭代,但是可迭代的对象不是迭代器
+除了__iter__方法之外,你可能还想在Sentence类中实现__next__方法,让Sentence实例既是可迭代的对象,
+也是自身的迭代器.
+可是,这种想法是非常糟糕的.常见的反模式
+迭代器模式可用来:
+访问一个聚合对象的内容而无需暴露它的内部表示
+支持对聚合对象的多种遍历
+为遍历不同的聚合结构提供一个统一的接口(即支持多态迭代)
+为了"支持多种遍历",必须能从同一可迭代的实例中获取多个独立的迭代器,而且各个迭代器要能维护自身的内部状态,
+因此这一模式正确的实现方式是,每次调用iter(my_iterable)都新建一个独立的迭代器
+可迭代的对象一定不能是自身的迭代器.也就是说,可迭代的对象必须实现__iter__方法,但不能实现__next__方法
+另一方面,迭代器应该一直可以迭代.迭代器的__iter__方法应该返回自身
+
+
+使用更符合Python习惯的方式实现Sentence类
+14.4 Sentence类第3版:生成器函数
+实现相同的功能,但却符合Python习惯的方式是,用生成器函数代替SentenceIterator类.
+示例14-5 sentence_gen.py:使用生成器函数实现Sentence类
+迭代器其实是生成器对象,每次调用__iter__方法都会自动创建,因为这里的__iter__方法是生成器函数
+
+生成器函数的工作原理
+只要Python函数的定义体中有yield关键字,该函数就是生成器函数.调用生成器函数时,会返回一个生成器对象.
+也就是说,生成器函数是生成器工厂
+普通的函数与生成器函数在句法上唯一的区别是,在后者的定义体中有yield关键字.
+一个特别简单的函数说明生成器的行为:
+gen_test.py
+生成器函数会创建一个生成器对象,包装生成器函数的定义体.
+把生成器传给next(...)函数时,生成器函数会向前,执行定义体中的下一个yield语句,返回产出的值,并在函数定义
+体的当前位置暂停.最终,函数的定义体返回时,外层的生成器对象会抛出StopIteration异常(与迭代器协议一致)
+
+产出或生成值:生成器不会以常规的方式"返回"值:生成器函数定义体中的return语句会触发生成器对象抛出StopIteration异常
+在Python3.3之前,如果生成器函数中的return语句有返回值,那么会报错.
+现在可以这么做,不过return语句仍会导致StopIteration异常抛出.
+调用方可以从异常对象中获取返回值.可以,只有把生成器函数当成协程使用时,这么做才有意义
+
+示例14-6 使用for循环更清楚的说明了生成器函数定义体的执行过程
+示例14-6 运行时打印消息的生成器函数
+gen_test.py
+Sentence.__iter__方法的作用:__iter__方法是生成器函数,调用是会构建一个实现了迭代器接口的生成器对象,因此不用在定义SentenceIterator类了.
+惰性实现是指尽可能延后生成值.这样做能节省内存,而且或许还可以避免做无用的处理
+
+
+惰性方式定义Sentence类
+14.5 Sentence类第4版:惰性实现
+惰性求值(lazy evaluation)
+及早求值(eager evaluation)
+re.finditer函数是re.findall函数的惰性版本,返回的不是列表,而是一个生成器,按需产生re.MatchObject实例.
+如果有很多匹配,re.finditer函数能节省大量内存.
+示例14-7 sentence_gen2.py:在生成器函数中调用re.finditer生成器函数,实现Sentence类
+
+
+生成器函数已经极大地简化了代码,但是使用生成器表达式甚至能把代码变得更简短
+14.6 Sentence类第5版:生成器表达式
+简单的生成器函数,可以替换成生成器表达式
+生成器表达式可以理解为列表推导的惰性版本:不会迫切地构建列表,而是返回一个生成器,
+按需惰性生成元素.也就是说,如果列表推导是制造列表的工厂,那么生成器表达式就是制造生成器的工厂
+示例14-8 演示了一个简单的生成器表达式,并且与列表推导做了对比
+gen_test.py
+生成器表达式会产出生成器,因此可以使用生成器表达式进一步减少Sentence类的代码
+示例14-9 sentence_genexp.py:使用生成器表达式实现Sentence类
+唯一的区别是__iter__方法,这里不是生成器函数了(没有yield),而是使用生成器表达式构建生成器,然后将其返回.
+不过,最终的效果一样:调用__iter__方法会得到一个生成器对象
+
+
+生成器表达式是语法糖:完全可以替换成生成器函数,不过有时使用生成器表达式更便利.
+生成器表达式的用途
+14.7 何时使用生成器表达式
+为了实现Vector类,用了几个生成器表达式,__eq__,__hash__,__abs__,angle,angles,format,__add__和__mul__
+方法中各有一个生成器表达式.在这些方法中使用列表推导也行,不过立即返回的列表要使用更多的内存
+生成器表达式是创建生成器的简洁语法,这样无需先定义函数再调用.
+不过,生成器函数灵活的多,可以使用多个语句实现复杂的逻辑,也可以作为协程使用
+遇到简单的情况时,可以使用生成器表达式
+如果生成器表达式要分成多行写,倾向于定义生成器函数,以便提高可读性.此外,
+生成器函数有名称,可以重用
+句法提示
+如果函数或构造方法只有一个参数,传入生成器表达式时不用写一对调用函数的括号,再写一对括号围住生成器表达式,
+只写一对括号就行了,Vector(n*scalar for n in self)
+然而,如果生成器表达式后面还有其他参数,那么必须使用括号围住,否则会抛出SyntaxError异常
+
+
+之前说明了如何把生成器当做典型的迭代器使用,即从集合中获取元素.
+不过生成器也用于生成不受数据源限制的值
+14.8 另一个示例:等差数列生成器
+典型的迭代器模式作用很简单--遍历数据结构.
+不过,即便不是从集合中获取元素,而是获取序列中即使生成的下一个值时,也用得到这种基于方法的标准接口.
+例如,内置的range函数用于生成有穷整数等差数列(Arithmetic Progression, AP),itertools.count函数用于生成无穷等差数列
+示例14-11 列出的是ArithmeticProgression类的实现Arithmetic.py
+如果一个类只是为了构建生成器而去实现__iter__方法,那还不如使用生成器函数.
+毕竟,生成器函数是制造生成器的工厂
+示例14-12 定义了一个名为aritprog_gen的生成器函数,作用与ArithmeticProgression类一样,
+
+标准库中有许多现成的生成器.
+使用itertools模块生成等差数列
+Python3.4中的itertools模块提供了19个生成器函数,结合起来使用能实现很多有趣的用法
+例如,itertools.count函数返回的生成器能生成多个数.如果不传入参数,itertools.count函数会生成从零开始的整数数列.
+不过,我们可以提供可选的start和step值,这样实现的作用与aritprog_gen函数十分相似
+import itertools
+gen = itertools.count(1, .5)
+next(gen) --> 1
+next(gen) --> 1.5
+next(gen) --> 2.0
+next(gen) --> 2.5
+然而,itertools.count函数从不停止,因此,如果调用list(count()),Python会创建一个特别大的列表,超出可用内存,在调用失败之前,电脑会疯狂运转
+不过,itertools.takewhile函数则不同,它会生成一个使用另一个生成器的生成器,在指定的条件计算结果为False时停止.
+因此,可以把这两个函数结合在一起使用,编写下述代码:
+gen = itertools.takewhile(lambda n: n < 3, itertools.count(1, .5))
+list(gen) --> [1, 1.5, 2.0, 2.5]
+示例14-13 利用takewhile和count函数,写出的代码流畅而简短
+artiprog_v3.py
+其中的aritprog_gen不是生成器函数,因为定义体中没有yield关键字,但是它会返回一个生成器,因此它与其他生成器函数一样,也是生成器工厂函数
+实现生成器时要知道标准库中有什么可用,否则很有可能会重新发明轮子.
+
+
+现成的生成器函数
+14.9 标准库中的生成器函数
+标准库提供了很多生成器,有用于逐行迭代纯文本文件的对象,还有
+出色的os.walk函数.这个函数在遍历目录树的过程中产出文件名,因此递归搜索文件系统像for循环那样简单.
+参数为任意的可迭代对象,返回值是生成器,用于生成选中的,计算出的和重新排列的元素.
+第一组:用于过滤的生成器函数:从输入的可迭代对象中产出元素的子集,而且不修改元素本身.
+如itertools.takewhile函数,接受一个断言参数(predicate).这个参数是个布尔函数,有一个参数,会应用到输入中的每个元素上,用于判断元素是否包含在输出中
+用于过滤的生成器函数
+模块                      函数
+说明
+itertools               compress(it, selector_it)
+并行处理两个可迭代的对象;如果selector_it中的元素是真值,产出it中对应的元素
+itertools               dropwhile(predicate, it)
+处理it,跳过predicate的计算结果为真值的元素,然后产出剩下的各个元素(不再进一步检查)
+(内置)                    filter(predicate, it)
+把it中的各个元素传给predicate,如果predicate(item)返回真值,那么产出对应的元素;如果predicate是None,那么只产出真值元素
+itertools               filterfalse(predicate, it)
+与filter函数的作用类似,不过predicate的逻辑是相反的:predicate返回假值时产出对应的元素
+itertools               islice(it, stop)或islice(it, start, stop, step=1)
+产出it的切片,作用类似与s[:stop]或s[start:stop:step],不过it可以是任何可迭代的对象,而且这个函数实现的是惰性操作
+itertools               takewhile(predicate, it)
+predicate返回真值时产出对应的元素,然后立即停止,不再继续检查
+实例14-14 演示用于过滤的生成器函数
+filter_gen_test.py
+下一组是用于映射的生成器函数:在输入的单个可迭代对象(map和starmap函数处理多个可迭代的对象)中的各个元素上做计算,
+然后返回结果.以下的生成器函数会从输入的可迭代对象中的各个元素中产出一个元素.如果输入来自多个可迭代的对象,第一个可迭代的对象到头就停止输出
+用于映射的生成器函数
+模块                      函数
+说明
+itertools               accumulate(it, [func])
+产出累积的总和;如果提供了func,那么把前两个元素传给它,然后把计算结果和下一个元素传给它,以此类推,最后产出结果
+(内置)                    enumerate(iterable, start=0)
+产出由两个元素组成的元组,结构是(index, item),其中index从start开始计数,item则从iterable中获取
+(内置)                    map(func, it1, [it2, ..., itN])
+把it中的各个元素传给func,产出结果;如果传入N个可迭代对象,那么func必须能接受N个参数,而且要并行处理各个可迭代的对象
+itertools               starmap(func, it)
+把it中的各个元素传给func,产出结果;输入的可迭代对象应该产出可迭代的元素iit,然后以func(*iit)这种形式调用func
+示例14-15 演示了itertools.accumulate函数的几个用法
+示例14-16 演示用于映射的生成器函数
+accu_test.py
+下一组是用于合并的生成器函数,这些函数都从输入的多个可迭代对象中产出元素.
+chain和chain.from_iterable按顺序(一个接一个)处理输入的可迭代对象,而product,zip和zip_longest并行处理输入的各个可迭代对象
+合并多个可迭代对象的生成器函数
+模块                      函数
+说明
+itertools               chain(it1, ..., itN)
+先产出it1中的所有元素,然后产出it2中所有元素,以此类推,无缝连接在一起
+itertools               chain.from_iterable(it)
+产出it生成的各个可迭代对象中的元素,一个接一个,无缝连接在一起;it应该产出可迭代的元素,例如可迭代的对象列表
+itertools               product(it1, ..., itN, repeat=1)
+计算笛卡尔积(product乘积):从输入的各个可迭代对象中获取元素,合并成由N个元素组成的元组,与嵌套的for循环效果一样;repeat指明重复处理多少次输入的可迭代对象
+(内置)                    zip(it1, ..., itN)
+并行从输入的各个可迭代对象中获取元素,产出由N个元素组成的元组,只要有一个可迭代的对象到头了,就默默地停止
+itertools               zip_longest(it1, ..., itN, fillvalue=None)
+并行从输入的各个可迭代对象中获取元素,产出由N个元素组成的元组,等到最长的可迭代对象到头才停止,空缺的值使用fillvalue填充
+示例14-17展示itertools.chain和zip生成器函数及其同胞的用法.
+zip_gen_test.py
+itertools.product生成器是计算笛卡尔积的惰性方式;
+prod_gen_test.py
+有些生成器函数会从一个元素中产出多个值,扩展输入的可迭代对象,
+把输入的各个元素扩展成多个输入元素的生成器函数
+模块                      函数
+说明
+itertools               combinations(it, out_len)
+把it产出的out_len个元素组合在一起,然后产出
+itertools               combinations_with_replacement(it, out_len)
+把it产出的out_len个元素组合在一起,然后产出,包含相同元素的组合
+itertools               count(start=0, step=1)
+从start开始不断产出数字,按step指定的步幅增加
+itertools               cycle(it)
+从it中产出各个元素,存储各个元素的副本,然后按顺序重复不断地产出各个元素
+itertools               permutations(it, out_len=None)     permutation:排列
+把out_len个it产出的元素排列在一起,然后产出这些排列:out_len的默认值等于len(list(it))
+itertools               repeat(item, [times])
+重复不断地产出指定的元素,除非提供times,指定次数
+itertools模块中的count和repeat函数返回的生成器"无中生有":
+这两个函数都不接受可迭代的对象作为输入.
+cycle生成器会备份输入的可迭代对象,然后重复产出对象中的元素
+示例14-19 演示count,repeat和cycle的用法
