@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/chapter12" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chapter14" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chapter15" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter16" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
