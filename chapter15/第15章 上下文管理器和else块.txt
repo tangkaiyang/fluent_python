@@ -30,3 +30,69 @@ __enter__方法返回的对象上调用
 lookingglass_test.py
 示例15-3 LookingGlass类的实现
 mirror.py
+在实际使用中,如果应用程序接管了标准输出,可能会暂时把sys.stdout换成类似文件的其他对象
+,然后再切换成原来的版本
+contextlib.redirect_stdout上下文管理器就是这么做的:只需传入类似文件的对象,用于替代sys.stdout
+解释器调用__enter__方法时,除了隐式的self之外,不会传入任何参数.
+传给__exit__方法的三个参数:
+exc_type:
+    异常类(例如ZeroDivisionError)
+exc_value
+    异常实例.有时会有参数传给异常构造方法,例如错误信息,这些参数可以使用exc_value.args获取
+traceback
+    traceback对象
+上下文管理器的具体工作方式
+实例15-4,在with块外使用LookingGlass类,
+lookingglass_test.py
+
+
+contextlib模块,提供了一些实用工具
+15.3 contextlib模块中的使用工具
+contextlib模块中的一些类和其他函数
+redirect_stdout
+
+closing
+    如果对象提供了close()方法,但没有实现__enter__/__exit__协议,那么可以使用这个函数构建上下文管理器
+suppress
+    构建临时忽略指定异常的上下文管理器
+@contextmanager
+    这个装饰器把简单的生成器函数变成上下文管理器,这样就不用创建类去实现管理器协议了
+ContextDecorator
+    这是个基类,用于定义基于类的上下文管理器.
+    这种上下文管理器也能用于装饰函数,在受管理的上下文中运行整个函数
+ExitStack
+    这个上下文管理器能进入多个上下文管理器.with块结束时,
+    ExitStack按照后进先出的顺序调用栈中各个上下文管理器的__exti__方法.
+    如果事先不知道with块要进入多少个上下文管理器,可以使用这个类.
+    例如,同时打开任意一个文件列表中的所有文件.
+
+
+15.4 使用@contextmanager (context:环境,上下文)
+@contextmanager装饰器能减少创建上下文管理器的样板代码量,
+因为不用编写一个完整的类,定义__enter__和__exit__方法,
+而只需实现一个有yield语句的生成器,生成想让__enter__方法返回的值
+在使用@contextmanager装饰的生成器中,yield语句的作用是把
+函数的定义体分成两部分:yield语句前面的所有代码在with块开始时
+(即解释器调用__enter__方法时)执行,
+yield语句后面的代码在with块结束时(即调用__exit__方法时)执行
+示例15-5 使用一个生成器函数代替15-3中的LookingGlass类
+mirror_gen.py
+示例15-6 使用looking_glass函数的例子
+lookingglass_test.py
+
+其实,contextlib.contextmanager装饰器会把函数包装成实现__enter__和__exit__方法的类
+这个类的__enter__方法有如下作用.
+1)调用生成器函数,保存生成器对象(这里把它称为gen)
+2)调用next(gen),执行到yield关键字所在的位置
+3)返回next(gen)产出的值,以便把产出的值绑定到with/as语句中的目标变量上
+
+with块终止时,__exit__方法会做以下几件事.
+1)检查有没有把异常传给exc_type;如果有,调用
+gen.throw(exception),在生成器函数定义体中包含yield关键字的那一行抛出异常
+2)否则,调用next(gen),继续执行生成器函数定义体中yield语句之后的代码
+
+实例15-5 中有一个严重的错误:如果在with块中抛出了异常,Python解释器会将其捕获,
+然后在looking_glass函数的yield表达式里再次抛出.
+但是,那里没有处理错误的代码,因此looking_glass函数会中止,
+永远无法恢复成原来的sys.stdout.write方法,导致系统处于无效状态
+示例15-7处理ZeroDivisionError异常;
