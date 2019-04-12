@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter15/mirror_gen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter15/context_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter15/mirror_gen_exc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter15/lookingglass_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter15/lookingglass_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter15/mirror.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter15/mirror.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chapter15/第15章 上下文管理器和else块.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chapter15/第15章 上下文管理器和else块.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +20,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chapter15/第15章 上下文管理器和else块.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="479">
+              <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter15/context_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter15/mirror_gen_exc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -28,7 +47,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter15/mirror_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="304">
               <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
             </state>
           </provider>
@@ -37,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter15/mirror.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="494">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -46,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter15/lookingglass_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="209">
               <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
               <folding>
                 <element signature="e#203#234#0" expanded="true" />
@@ -70,8 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/chapter08/object_reference_mutable_recycle.py" />
-        <option value="$PROJECT_DIR$/chapter09/vector2d_v0.py" />
         <option value="$PROJECT_DIR$/chapter09/Python_style_object.py" />
         <option value="$PROJECT_DIR$/chapter10/vector2d_v3.py" />
         <option value="$PROJECT_DIR$/chapter10/vector_v1.py" />
@@ -120,6 +137,8 @@
         <option value="$PROJECT_DIR$/chapter15/mirror.py" />
         <option value="$PROJECT_DIR$/chapter15/mirror_gen.py" />
         <option value="$PROJECT_DIR$/chapter15/lookingglass_test.py" />
+        <option value="$PROJECT_DIR$/chapter15/mirror_gen_exc.py" />
+        <option value="$PROJECT_DIR$/chapter15/context_test.py" />
         <option value="$PROJECT_DIR$/chapter15/第15章 上下文管理器和else块.txt" />
       </list>
     </option>
@@ -330,7 +349,8 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="716" y="0" width="816" height="832" extended-state="0" />
+    <frame x="895" y="0" width="1020" height="1040" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24358974" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -344,7 +364,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683544" weight="0.16097023" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5031645" side_tool="true" weight="0.23428571" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.5031645" side_tool="true" visible="true" weight="0.2337376" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49841774" weight="0.24696803" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -372,17 +392,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chapter11/protocol_to_abc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="306" column="14" selection-start-line="306" selection-start-column="14" selection-end-line="306" selection-end-column="14" />
-          <folding>
-            <element signature="e#7457#7484#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter11/tombolist.py" />
     <entry file="file://$PROJECT_DIR$/chapter11/lotto.py" />
     <entry file="file://D:/Python/Python37/Lib/random.py" />
     <entry file="file://$PROJECT_DIR$/chapter11/frenchdeck2.py" />
@@ -485,7 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-516756811/builtins.py" />
     <entry file="file://$PROJECT_DIR$/chapter14/iterator_get.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
@@ -607,13 +615,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/itertools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/itertools.py" />
     <entry file="file://$PROJECT_DIR$/chapter14/第14章可迭代的对象,迭代器和生成器.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
@@ -628,13 +630,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Anaconda3/Lib/random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="221" selection-start-line="221" selection-end-line="221" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Anaconda3/Lib/random.py" />
     <entry file="file://$PROJECT_DIR$/chapter14/def_chain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -680,37 +676,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/builtins.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/builtins.py" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/sys.py" />
+    <entry file="file://$PROJECT_DIR$/chapter15/mirror_gen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="488" column="7" selection-start-line="488" selection-end-line="489" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/sys.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="667" selection-start-line="667" selection-end-line="667" />
+        <state relative-caret-position="304">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter15/mirror.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter15/mirror_gen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        <state relative-caret-position="494">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter15/lookingglass_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="209">
           <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
           <folding>
             <element signature="e#203#234#0" expanded="true" />
@@ -718,10 +702,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-516756811/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="851" column="43" lean-forward="true" selection-start-line="851" selection-start-column="43" selection-end-line="851" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter15/mirror_gen_exc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter15/context_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chapter15/第15章 上下文管理器和else块.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="479">
+          <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
         </state>
       </provider>
     </entry>

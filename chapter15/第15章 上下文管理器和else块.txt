@@ -96,3 +96,26 @@ gen.throw(exception),在生成器函数定义体中包含yield关键字的那一
 但是,那里没有处理错误的代码,因此looking_glass函数会中止,
 永远无法恢复成原来的sys.stdout.write方法,导致系统处于无效状态
 示例15-7处理ZeroDivisionError异常;
+mirror_gen_exc.py
+为了告诉解释器异常已经处理过了,__exit__方法会返回True,此时解释器会压制异常.
+如果__exit__方法没有显式返回一个值,那么解释器得到的是None,然后向上冒泡异常.
+使用@contextmanager装饰器时,默认的行为是相反的:装饰器提供的__exit__方法假定发给生成器的所有异常都得到处理了,
+因此应该压制异常.如果不想让@contextmanager压制异常,必须在被装饰的函数中显式重新抛出异常
+这样约定的原因是,创建上下文管理器时,生成器无法返回值,只能产出值.
+不过,现在可以返回值了
+使用@contextmanager装饰器时,要把yield语句放在try/finally语句中(或者放在with语句中),
+这是无法避免的,因为我们永远不知道上下文管理器的用户会在with块中做什么
+示例15-8 用于原地重写文件的上下文管理器
+context_test.py
+注意,在@contextmanager装饰器装饰的生成器中,yield与迭代没有任何关系.
+本节的示例中,生成器函数的作用更像是协程:执行到某一点时暂停,让客户代码运行,知道客户让协程继续做事.
+
+
+15.5 本章小结
+for,while和try语句的else子句
+上下文管理器和with语句的作用.
+__enter__/__exti__方法
+with不仅能管理资源,还能用于去掉常规的设置和清理代码,或者在另一个过程前后执行的操作
+标准库中contextlib模块
+@contextmanager装饰器能把包含一个yield语句的简单生成器变成上下文管理器
+@contextmanager装饰器结合了:函数装饰器,生成器和with语句
