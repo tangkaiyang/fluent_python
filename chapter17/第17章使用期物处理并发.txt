@@ -1,0 +1,133 @@
+第17章 使用期物处理并发
+Python3.2引入的concurrent.futures模块
+期物(future):指一种对象,表示异步执行的操作.
+是concurrent.futures模块和asyncio包的基础
+17.1 示例:网络下载的三种风格
+为了高效处理网络I/O,需要使用并发,因为网络有很高的延迟,所以为了不浪费CPU周期去等待,最好在收到网络响应之前做些其他的事.
+在I/O密集型应用中,如果代码写得正确,那么不管使用哪种并发策略(使用线程或asyncio包),吞吐量都比依序执行的代码高很多.
+17.1.1 依序下载的脚本
+示例17-2 flags.py:依序下载的脚本;另外两个脚本会重用其中几个函数
+requests库,比Python3标准库的urllib.request模块更易于使用
+requests库提供的API更符合Python的习惯用法
+
+17.1.2 使用concurrent.futures模块下载
+concurrent.futures模块的主要特色是
+ThreadPoolExecutor和ProcessPoolExecutor类,
+这两个类实现的接口能分别在不同的线程或进程中执行可调用的对象.
+这两个类在内部维护着一个工作线程或进程池,以及要执行的任务队列.
+不过,这个接口抽象的层级很高,
+示例17-3展示了如何使用ThreadPoolExecutor.map方法,以最简单的方式实现并发下载
+示例17-3 flags_threadpool.py: 使用futures.ThreadPoolExecutor类实现多线程下载的脚本
+编写并发代码时经常这样重构:把依次序执行的for循环体改成函数,以便并发调用
+
+17.1.3 期物在哪里
+期物是concurrent.futures模块和asyncio包的重要组件,可是作为用户,有时却看不见期物
+从Python3.4起,标准库中有两个名为Future的类:
+concurrent.futures.Future和asyncio.Future.
+这两个类的作用相同:两个Future类的实例都表示可能已经完成或尚未完成的延迟计算.
+这与Twisted引擎中的Deferred类,Tornado框架中的Future类,以及多个JavaScript库中的Promise对象类似.
+期物封装待完成的操作,可以放入队列,完成的状态可以查询,得到结果(或抛出异常)后可以获取结果(或异常)
+通常情况下自己不应该创建期物,而只能由并发框架(concurrent.futures或asyncio)实例化.
+因为:期物表示终将发生的事情,而确定某件事会发生的唯一方式是执行的时间已经排定.
+因此,只有排定把某件事交给concurrent.futures.Executor子类处理时,才会创建
+concurrent.futures.Future实例.
+例如:Executor.submit()方法的参数是一个可调用的对象,调用这个方法后会传入的可调用对象排期,并返回一个期物.
+客户端代码不应该改变期物的状态,并发框架在期物表示的延迟计算结束后会改变期物的状态,而我们无法控制计算何时结束
+这两种期物都有.done()方法,这个方法不阻塞,返回值是布尔值,指明期物链接的可调用对象是否已经执行.
+客户端代码通常不会询问期物是否运行结束,而是会等待通知.
+因此,两个Future类都有.add_done_callback()方法:
+这个方法只有一个参数,类型是可调用的对象,期物运行结束后会调用指定的可调用对象
+此外,还有.result()方法.在期物运行结束后调用的话,这个方法在两个Future类中的作用是相同的:
+返回可调用对象的结果,或者重新抛出执行可调用的对象抛出的异常.可是,
+如果期物没有运行结束,result方法在两个Future类中的行为相差很大.
+对concurrent.futures.Future实例来说,调用f.result()方法会阻塞调用方所在的线程,直到有结果可返回.
+此时result方法可以接受可选的timeout参数,如果在指定的时间内期物没有运行完毕,会抛出
+TimeoutError异常.
+asyncio.Future.result方法不支持设定超时时间,在那个库中获取期物的结果最好使用
+yield from结构.不过,对concurrent.futures.Future实例不能这么做.
+这两个库中有几个函数会返回期物,其他函数则使用期物,
+以用户易于理解的方式实现自身.
+使用17-3中的Executor.map方法属于后者:
+返回值是一个迭代器,迭代器的__next__方法调用各个期物的result方法,因此我们得到的是各个期物的结果,而非期物本身
+为了从使用的角度理解期物,我们可以使用concurrent.futures.as_completed函数重写示例17-3.
+这个函数的参数是一个期物列表,返回值是一个迭代器,在期物运行结束后产出期物.
+为了使用futures.as_completed函数,只需修改download_many函数,把较抽象的executor.map调用换成两个for循环:
+一个用于创建并排定期物,另一个用于获取期物的结果.
+示例17-4 flags_threadpool_ac.py: 把download_many函数中的executor.map方法换成executor.submit方法和futures.as_completed函数
+严格来说,目前测试的并发脚本都不能并行下载.使用concurrent.futures库实现的那两个实例
+受GIL(Global Interpreter Lock,全局解释锁)的限制,而flags_asyncio.py脚本在单个线程中运行
+
+既然Python线程受到GIL的限制,任何时候都只允许运行一个线程,那么flags_threadpool.py脚本的下载速度怎么会比flags.py脚本块5倍?
+flags_asyncio.py脚本和flags.py脚本都在单个线程中运行,前者怎么会比后者快5倍?
+
+
+GIL几乎对I/O密集型处理乌海
+17.2 阻塞型I/O和GIL
+CPython解释器本身就不是线程安全的,因此有全局解释锁(GIl),
+一次只允许使用一个线程执行Python字节码.
+因此,一个Python进程通常不能同时使用多个CPU核心
+#这是CPython解释器的局限,与Python语言本身无关.Jython和IroPython没有这种限制
+#目前最快的PyPy解释器也有GIL
+编写Python代码时无法控制GIL;不过,执行耗时的任务时,可以使用一个内置的函数或一个使用C语言编写的
+扩展释放GIL.其实,有个使用C语言编写的Python库能管理GIL,自行启动操作系统线程,利用全部可用的CPU核心.
+这样做会极大地增加库代码的复杂度,因此大多数库的作者都不这么做
+然而,标准库中所有执行阻塞型I/O操作的函数,在等待操作系统返回结果式都会释放GIL.
+这意味着Python语言这个层次上可以使用多线程,而I/O密集型Python程序能从中受益:
+一个Python线程等待网络响应时,阻塞型I/O函数会释放GIL,再运行一个线程
+Python标准库中的所有阻塞型I/O函数都会释放GIl,允许其他线程运行.time.sleep()函数也会释放GIl.
+因此,尽管有GIl,Python线程还是能在I/O密集型应用中发挥作用
+
+
+简单说明如何在CPU密集型作业中使用concurrent.futures模块轻松绕开GIL
+17.3 使用concurrent.futures模块启动进程
+concurrent.futures模块的文档的副标题是"Launching parallel tasks"(执行并行任务).
+这个模块实现的是真正的并行计算,因为它使用ProcessPoolExecutor类把工作分配给多个Python进程处理.
+因此,如果需要做CPU密集型处理,使用这个模块能绕开GIL,利用所有可用的CPU核心
+ProcessPoolExecutor和ThreadPoolExecutor类都实现了通用的Executor接口,
+因此使用concurrent.futures模块能特别轻松地把基于线程的方案转成基于进程的方案
+下载国旗的实例或其他I/O密集型作业使用ProcessPoolExecutor类得不到任何好处.
+def download_many(cc_list):
+    workers = min(MAX_WORKER, len(cc_list))
+    with futures.ThreadPoolExecutor(workers) as executor:
+改为:
+def download_many(cc_list):
+    with futures.ProcessPoolExecutor() as executor:
+对简单的用途来说,这两个实现Executor接口的类唯一值的注意的区别是,
+ThreadPoolExecutor.__init__方法需要max_workers参数,指定线程池中线程的数量.
+在ProcessPoolExecutor类中,那个参数是可选的,而且大多数情况下不使用--默认值是
+os.cpu_count()函数返回的CPU数量.
+这样处理说的通,因为对CPU密集型的处理来说,不可能要求使用超过CPU数量的职程
+而对I/O密集型处理来说,可以在一个ThreadPoolExecutor实例中使用10个,100个或1000个线程;
+最佳线程数取决于做的是什么事,以及可用内存有多少,因此要仔细测试才能找到最佳的线程数
+ProcessPoolExecutor的价值体现在CPU密集型作业上.
+
+
+下面通过一个演示程序来研究线程池的行为.这个程序会创建一个包含3个职程的线程池,运行5个
+可调用的对象,输出带有时间戳的消息
+17.4 实验Executor.map方法
+最简单的方式并发运行多个可调用的对象:Executor.map
+实例17-6 demo_executor_map.py:简单演示ThreadPoolExecutor类的map方法
+Executor.map函数易于使用,不过有个特性可能有用,也可能没用,具体情况取决于需求:
+这个函数返回结果的顺序与调用开始的顺序一致.
+如果第一个调用生成结果用时10秒,而其他调用只用1秒,代码会阻塞10秒,获取map方法返回的生成器产出的第一个结果.
+在此之后,获取后续结果时不会组设,因为后续的调用已经结束.如果必须等到获取所有结果后再处理,
+这种行为没问题;不过通常更可取的方式是,不管提交的顺序,只要有结果就获取.
+为此,要把Executor.submit方法和futures.as_completed函数结合起来使用
+
+executor.submit和futures.as_completed这个组合比executor.map更灵活,因为submit方法能处理
+不同的可调用对象和参数,而executor.map只能处理参数不同的同一个可调用对象.
+此外,传给futures.as_completed函数的期物集合可以来自多个Executor实例,例如一些又ThreadPoolExecutor实例创建,另一些由ProcessPoolExecutor实例创建
+
+
+不使用executor.map方法,而是迭代futures.as_completed函数返回的结果
+17.5 显示下载进度并处理错误
+测试并发客户端时要小心
+在公开的HTTP服务器上测试HTTP并发客户端要小心,因为每秒可能会发起很多请求,
+这相当于是拒绝服务(DoS)攻击.
+使用TQDM包实现的文本动画进度条
+pip install tqdm
+能处理任何可迭代的对象,生成一个迭代器;使用这个迭代器时,显示进度条和完成全部迭代预计的剩余时间.
+提供了命令行接口.
+17.5.1 flags2系列示例处理错误的方式
+这三个示例在负责下载一个文件的函数(download_one)中使用相同的策略处理HTTP 404错误.
+其他异常则向上冒泡,交给download_many函数处理
