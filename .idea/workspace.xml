@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter17/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter17/demo_executor_map.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter17/flags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter17/flags_threadpool.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter17/flags_threadpool_ac.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="129" column="9" lean-forward="true" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
+            <state relative-caret-position="410">
+              <caret line="137" selection-start-line="137" selection-end-line="137" />
             </state>
           </provider>
         </entry>
@@ -31,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter17/demo_executor_map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+            <state relative-caret-position="513">
+              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
               <folding>
                 <element signature="e#233#265#0" expanded="true" />
               </folding>
@@ -43,11 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="38" lean-forward="true" selection-start-line="9" selection-end-line="38" />
-              <folding>
-                <element signature="e#242#272#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="703">
+              <caret line="38" selection-start-line="9" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -55,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool_ac.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="1197">
               <caret line="64" column="48" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
               <folding>
                 <element signature="e#284#314#0" expanded="true" />
@@ -67,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter17/flags.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-19">
+            <state relative-caret-position="570">
               <caret line="34" column="94" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="94" />
               <folding>
                 <element signature="e#204#213#0" expanded="true" />
@@ -145,10 +136,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="942" />
-    <option name="width" value="987" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="941" />
+    <option name="width" value="988" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -400,7 +391,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="754" y="0" width="789" height="830" extended-state="0" />
+    <frame x="753" y="0" width="790" height="831" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24358974" />
@@ -416,7 +407,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683544" weight="0.16045845" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50101835" side_tool="true" weight="0.3296582" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.86558044" visible="true" weight="0.32234958" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.86558044" visible="true" weight="0.32188842" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -746,29 +737,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter17/flags.py">
+    <entry file="file://$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="34" column="94" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="94" />
+        <state relative-caret-position="410">
+          <caret line="137" selection-start-line="137" selection-end-line="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter17/demo_executor_map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
           <folding>
-            <element signature="e#204#213#0" expanded="true" />
+            <element signature="e#233#265#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="38" lean-forward="true" selection-start-line="9" selection-end-line="38" />
-          <folding>
-            <element signature="e#242#272#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="703">
+          <caret line="38" selection-start-line="9" selection-end-line="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool_ac.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="1197">
           <caret line="64" column="48" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
           <folding>
             <element signature="e#284#314#0" expanded="true" />
@@ -776,20 +771,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter17/demo_executor_map.py">
+    <entry file="file://$PROJECT_DIR$/chapter17/flags.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        <state relative-caret-position="570">
+          <caret line="34" column="94" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="94" />
           <folding>
-            <element signature="e#233#265#0" expanded="true" />
+            <element signature="e#204#213#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="129" column="9" lean-forward="true" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
         </state>
       </provider>
     </entry>

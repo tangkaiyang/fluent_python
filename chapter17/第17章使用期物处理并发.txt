@@ -131,3 +131,15 @@ pip install tqdm
 17.5.1 flags2系列示例处理错误的方式
 这三个示例在负责下载一个文件的函数(download_one)中使用相同的策略处理HTTP 404错误.
 其他异常则向上冒泡,交给download_many函数处理
+示例17-12: flags_sequential.py:负责下载的基本函数:
+
+
+17.5.3 线程和多进程的替代方案
+
+17.6 本章小结
+使用Executor.submit(...)方法创建期物,
+使用concurrent.futures.as_completed(...)函数迭代运行结束的期物
+
+GIL
+
+多线程和多进程并发的底层实现threading和multiprocessing模块
