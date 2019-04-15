@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter18/http_charfinder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/osconfeed.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/osconfeed.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter18/charfinder_index.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/chapter18/charfinder_index.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter18/tcp_charfinder.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter18/tcp_charfinder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +16,38 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+              <folding>
+                <element signature="e#191#225#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,9 +62,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/chapter14/14-2.py" />
-        <option value="$PROJECT_DIR$/chapter14/sentence_iter.py" />
-        <option value="$PROJECT_DIR$/chapter14/sentence_gen.py" />
         <option value="$PROJECT_DIR$/chapter14/sentence_gen2.py" />
         <option value="$PROJECT_DIR$/chapter14/gen_test.py" />
         <option value="$PROJECT_DIR$/chapter14/sentence_genexp.py" />
@@ -83,6 +110,9 @@
         <option value="$PROJECT_DIR$/chapter18/tcp_charfinder.py" />
         <option value="$PROJECT_DIR$/chapter18/http_charfinder.py" />
         <option value="$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发.txt" />
+        <option value="$PROJECT_DIR$/chapter19/osconfeed.json" />
+        <option value="$PROJECT_DIR$/chapter19/osconfeed.py" />
+        <option value="$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt" />
       </list>
     </option>
   </component>
@@ -95,7 +125,25 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+              <item name="chapter19" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -123,7 +171,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tcp_charfinder">
+  <component name="RunManager" selected="Python.osconfeed">
     <configuration name="coroaverager1" type="PythonConfigurationType" factoryName="Python">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,27 +193,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="demo_executor_map" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fluent_python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter17" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter17/demo_executor_map.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="flags_asyncio" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,6 +206,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter18/flags_asyncio.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="osconfeed" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fluent_python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter19" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter19/osconfeed.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -252,11 +300,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.osconfeed" />
         <item itemvalue="Python.tcp_charfinder" />
         <item itemvalue="Python.flags_asyncio" />
         <item itemvalue="Python.spinner_asyncio" />
         <item itemvalue="Python.spinner_thread" />
-        <item itemvalue="Python.demo_executor_map" />
       </list>
     </recent_temporary>
   </component>
@@ -325,13 +373,13 @@
   <component name="ToolWindowManager">
     <frame x="551" y="0" width="992" height="832" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24270557" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24267782" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4928717" weight="0.5885714" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39111748" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4928717" weight="0.38714287" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49898168" weight="0.32929516" />
@@ -370,27 +418,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chapter14/Arithmetic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="100" selection-start-line="26" selection-start-column="100" selection-end-line="26" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter01/my_vector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/zip_gen_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chapter14/prod_gen_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -680,6 +707,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+          <folding>
+            <element signature="e#191#225#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
