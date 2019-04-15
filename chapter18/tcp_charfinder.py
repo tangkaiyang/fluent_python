@@ -75,4 +75,9 @@ if __name__ == '__main__':
 
 # 注意,run_until_complete方法的参数是一个协程(start_server方法返回的结果)或一个Future对象(server.wait_closed放回的结果).
 # 如果传给run_until_complete方法的参数是协程,会把协程包装在Task对象中
-
+"""
+注意,main函数几乎会立即显示Serving on...消息,然后在调用loop.run_forever()方法时阻塞.
+在那一点,控制权流动到事件循环中,而且一直待在哪里,不过偶尔会回到handle_queries协程,这个
+协程需要等待网络发送或接受数据时,控制权又交还事件循环.在事件循环运行期间,只要有新客户端连接服务器就会启动一个handle_queries
+协程实例.因此,这个简单的服务器可以并发处理多个客户端.出现KeyboardInterrupt异常,或者操作系统把进程杀死,服务器会关闭
+"""

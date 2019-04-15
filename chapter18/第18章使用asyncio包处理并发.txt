@@ -281,3 +281,57 @@ charfinder.py模块,这个模块没有任何并发.
 或为使用asyncio包编写的服务器提供支持
 charfinder模块读取Python内建的Unicode数据库,为每个字符名称中的每个单词建立索引,然后倒排索引,存进一个字典.
 示例18-14 tcp_charfinder.py:使用asyncio.start_server函数实现的简易TCP服务器;
+
+
+18.6.2 使用aiohttp包编写Web服务器
+示例18-17 http_charfinder.py
+在前面的TCP示例中,服务器通过main函数中的下面两行代码创建并排定运行时间:
+    server_coro = asyncio.start_server(handle_queries, address, port, loop=loop)
+    server = loop.run_until_complete(server_coro)
+在这个HTTP示例中,init函数通过下述方式创建服务器
+    server = yield from loop.create_server(handler, address, port)
+但是init是协程,驱动它运行的是main函数中的:
+    host = loop.run_until_complete(init(loop, address, port))
+asyncio.start_server函数和loop.create_server方法都是协程,返回的结果都是asyncio.Server对象.
+为了启动服务器并返回服务器的引用,这两个协程都要由他人驱动,完成运行.
+在TCP示例中,做法是调用loop.run_until_complete(server_coro),其中server_coro是asyncio.start_server函数返回的结果.
+在HTTP示例中,create_server方法在init协程中的一个yield from表达式中调用,而init协程则由main函数中的
+loop.run_until_complete(init(...))调用驱动
+
+一个基本事实:只有驱动协程,协程才能做事,而驱动asyncio.coroutine装饰的协程有两种方法,
+要么使用yield from,要么传给asyncio包中某个参数为协程或期物的函数,例如run_until_complete
+
+注意homt不是协程,既然定义体中没有yield from表达式,也没必要是协程.
+在aiohttp包的文档中,add_route方法的条目下面说到:如果处理程序是普通的函数,在内部会将其转换成协程
+
+
+18.6.3 更好地支持并发的智能客户端
+home函数很像是Django或Flaskl中的视图函数,实现方式完全没有考虑异步:
+获取请求,从数据库中读取数据,然后构建响应,渲染完成的HTML页面.
+对真正的数据库来说,应该异步访问,否则在等待数据库查询结果的过程中,事件循环会阻塞.
+除了防止阻塞调用之外,高并发的系统还必须把复杂的工作分成多步,以保持敏捷.
+避免响应时间太长的方法是实现分页:首次至多返回定量的行,用户点击链接或滚动页面时再获取更多结果.
+实现分批发送结果所需的大多数代码都在浏览器这一端,因此Google和所有大型互联网公司都大量依赖客户端代码构建服务:
+智能的异步客户端能更好地使用服务器资源
+虽然智能的客户端甚至对老式Django应用也有帮助,但是要想真正为这种客户端服务,
+我们需要全方位支持异步编程的框架,从处理HTTP请求和响应到访问数据库,全都支持异步.
+如果想实现实时服务,例如游戏和以WebSockets支持的媒体流,那就尤其应该这么做
+
+18.7 本章小结
+介绍了Python中做并发编程的一种全新方式,这种方式使用
+yield from,协程,期物和asyncio事件循环.
+对比了使用threading模块和asyncio包处理并发的异同
+asyncio.Future类的细节,它对yield from的支持,以及与协程和asyncio.Task类的关系
+Ryan Dahl对I/O延迟所作的统计数据,
+阻塞调用的影响.
+尽管有些函数必然会阻塞,但是为了让程序持续运行,两种解决方案:使用多个线程,或者异步调用--后者以回调或者协程的形式实现
+其实,异步库依赖于底层线程(直至内核级线程),但是这些库的用户无需创建线程,也无需知道用到了基础设施中的底层线程.
+在应用中,我们只需确保没有阻塞的代码,事件循环会在背后处理并发.
+异步系统能避免用户级线程的开销,这是他能比多线程管理系统更多并发连接的主要原因
+asyncio.wait函数换成asyncio.as_completed函数,因此把download_many函数的大多数功能移到新添的downloader_coro协程中,
+这样我们才能使用yield from从asyncio.as_completed函数生成的多个期物中逐个获得结果
+如何使用loop.run_in_executor方法把阻塞的作业(例如保存文件)委托给线程池做.
+如何使用协程解决回调的主要问题:执行分成多步的异步任务时丢失上下文,以及缺少处理错误所需的上下文
+如何结合协程和yield from避免所谓的回调低于.
+如果忽略yield from关键字,使用yield from结构实现异步调用的多步过程看起来类似于顺序执行的代码
+最后两个示例是使用asyncio包实现的TCP和HTTP服务器,用于按名称搜索Unicode字符.
