@@ -1,0 +1,283 @@
+第18章 使用asyncio包处理并发
+并发是指一次处理多事件.
+并行是指一次做多件事.
+二者不同,但是有联系.
+一个关于结构,一个关于执行.
+并发用于指定方案,用来解决可能(但未必)并行的问题
+
+asyncio包,使用事件循环驱动的协程实现并发.
+asyncio大量使用yield from表达式
+
+本章话题:
+对比一个简单的多线程程序和对应的asyncio版,说明多线程和异步任务之间的关系
+asyncio.Future类与concurrent.futures.Future类之间的区别
+第17章中下载国旗那些示例的异步版
+摒弃线程或进程,如何使用异步编程管理网络应用中的高并发
+在异步编程中,与回调相比,协程显著提升性能的方式
+如何把阻塞的操作交给线程池处理,从而避免阻塞事件循环
+使用asyncio编写服务器,重新审视Web应用对高并发的处理方式
+为什么asyncio已经准备好对Python生态系统产生重大影响
+
+
+通过简单的示例对比threading模块和asyncio包
+18.1 线程与协程对比
+示例18-1 spinner_thread.py:通过线程以动画形式显示文本式旋转指针
+注意,Python没有提供终止线程的API.
+若想要关闭线程,必须给线程发送消息.
+
+使用@asyncio.coroutine装饰器替代线程,实现相同的行为
+#asyncio包使用的"协程"是较严格的定义.是和asyncio API的协程在定义体中必须使用yield from,
+而不能使用yield.此外,适合asyncio的协程要由调用方驱动,并由调用方通过yield from调用;
+或者把协程传给asyncio包中的某个函数,例如asyncio.async(...)和本章要介绍的其他函数,
+从而驱动协程.最后,@asyncio.coroutine装饰器应该应用在协程上
+示例18-2 spinner_asyncio.py:通过协程以动画形式显示文本式旋转指针
+除非像阻塞主线程,从而冻结事件循环或整个应用,否则不要在asyncio协程中使用time.sleep(...).
+如果协程需要在一段时间内什么也不做,应该使用yield from asyncio.sleep(DELAY)
+使用@asyncio.coroutine装饰器不是强制要求,这样做能把协程凸显出来,也有助于调试:
+如果还没从中产出值,协程就被垃圾回收了(意味着有操作未完成,因此有可能是个缺陷),那就可以发出警告.
+这个装饰器不会预激协程
+supervisor的协程与线程实现的区别:
+线程版:
+def supervisor():
+    signal = Signal()
+    spinner = threading.Thread(target=spin, args=('thinking!', signal))
+    print('spinner object:', spinner)
+    spinner.start()
+    result = slow_function()
+    signal.go = False
+    spinner.join()
+    return result
+协程版
+@asyncio.coroutine
+def supervisor():
+    spinner = asyncio.creat_task(spin('thinking!'))
+    print('spinner object:', spinner)
+    result = yield from slow_function()
+    spinner.cancel()
+    return result
+主要区别概述:
+# asyncio.Task对象差不多与threading.Thread对象等效.
+# Task对象用于驱动协程,Thread对象用于调用可调用的对象
+# Task对象不由自己动手实例化,而是通过把协程传给asyncio.create_task(...)函数或loop.create_task(...)方法获取
+# 获取的Task对象已经排定了运行时间;Thread实例则必须调用start方法,明确告知让它运行
+# 在线程版supervisor函数中,slow_function函数是普通的函数,直接由线程调用.在异步版supervisor函数中,slow_function函数是协程,由yield from驱动
+# 没有API能从外部终止线程,因为线程随时可能被中断,导致系统处于无效状态.如果想终止任务,可以使用Task.cancel()实例方法,在协程内部抛出CancelledError异常.协程可以在暂停的yield处捕获这个异常,处理终止请求
+# supervisor协程必须在main函数中由loop.run_until_complete方法执行
+另外一点:如果使用线程做过重要的编程,你就知道写出程序有多么困难,因为调度程序任何时候都能中断线程.必须记住保留锁,
+去保护程序中的重要部分,防止多步操作在执行的过程中中断,防止数据处于无效状态
+而协程默认会做好全方位保护,以防止中断.我们必须显式产出才能让程序的余下部分运行.对协程来说,无需保留锁,在多个线程之间同步操作,
+协程自身就会同步,因为在任意时刻只有一个协程在运行.想交出控制权时,可以使用yield或yield from把控制权交还调度程序.
+这就是能够安全地取消协程的原因:按照定义,协程只能在暂停的yield处取消,因此可以处理CancelledError异常,执行清理操作
+
+
+asyncio.Future类与concurrent.futures.Future类之间的区别
+18.1.1 asyncio.Future:故意不阻塞
+asyncio.Future类与concurrent.futures.Future类的接口基本一致,不过实现方式不同,不可以互换
+期物只是调度执行某物的结果.在asyncio包中,BaseEventLoop.create_task(...)方法接收一个协程,排定它的运行时间,
+然后返回一个asyncio.Task实例--也是asyncio.Future类的实例,因为Task是Future的子类,用于包装协程.
+这与调用Executor.submit(...)方法创建concurrent.futures.Future实例是一个道理
+与concurrent.futures.Future类似,asyncio.Future类也提供了.done(),.add_done_callback()和.result()等方法,
+前两个方法的用法与之前一样,不过.result()方法差别很大
+asyncio.Future类的.result()方法没有参数,因为不能指定超时时间.此外,如果调用.result()方法时期物还没运行完毕,那么
+.result()方法不会阻塞去等待结果,而是抛出asyncio.InvalidStateError异常
+然而,获取asyncio.Future对象的结果通常使用yield from,从中产出结果
+使用yield from处理期物,等待期物运行完毕这一步无需我们关心,而且不会阻塞事件循环,因为在
+asyncio包中,yield from的作用是把控制权还给事件循环
+注意,使用yield from处理期物与使用add_done_callback方法处理协程的作用一样:
+延迟的操作结束后,时间循环不会触发回调对象,而是设置期物的返回值;而
+yield from表达式则在暂停的协程中生成返回值,恢复执行协程
+总之,因为asyncio.Future类的目的是与yield from一起使用,所以通常不需要使用以下方法:
+#无需调用my_future.add_done_callback(...),因为可以直接把想在期物运行结束后执行的操作放在协程中yield from my_future
+表达式的后面,这是协程的一大优势:协程是可以暂停和恢复的函数
+#无需调用my_future.result(),因为yield from从期物中产生的值就是结果(例如,result = yield from my_future)
+当然,有时也需要使用.done(),.add_done_callback()和.result()方法.
+但是一般情况下,asyncio.Future对象由yield from驱动,而不是靠调用这些方法驱动
+
+
+下面分析yield from和asyncio包的API如何拉近期物,任务和协程的关系
+18.1.2 从期物,任务和协程中产出
+在asyncio包中,期物和协程关系紧密,因为可以使用yield from从asyncio.Future对象中产出结果.
+这意味着,如果foo是协程函数(调用后返回协程对象),抑或是返回Future或Task实例的普通函数,
+那么可以这么写:res = yield from foo().
+这是asyncio包中的API中很多地方可以互换协程与期物的原因之一
+为了执行这些操作,必须排定协程的运行时间,然后使用asyncio.Task对象包装协程.对协程来说,
+获取Task对象有两种主要方式:
+asyncio.ensure_future(coro_or_future, *, loop=None)
+    这个函数统一了协程和期物:第一个参数可以是二者中的任何一个.如果是Future或Task对象,那就原封不动地返回.如果是协程,
+    那么ensure_future函数会调用loop.create_task()方法创建Task对象.loop=关键字参数是可选的,用于传入事件循环;
+    如果没有传入,那么async函数会通过调用asyncio.get_event_loop()函数获取循环对象
+BaseEventLoop.create_task(coro)
+    这个方法排定协程的执行时间,返回一个asyncio.Task对象.如果在自定义的BaseEventLoop子类上调用,返回的对象可能是外部库
+    (如Tornado)中与Task类兼容的某个类的实例
+
+asyncio包中有多个函数会自动把参数指定的协程包装在asyncio.Task对象中,例如
+BaseEventLoop.run_until_complete()方法
+
+import asyncio
+def run_sync(coro_or_future):
+    loop = asyncio.get_event_loop()
+    return loop.run_until_complete(coro_or_future)
+a = run_sync(some_coroutine())
+
+
+18.2 使用asyncio和aiohttp包下载
+从Python3.4起,asyncio包只直接支持TCP和UDP.如果想使用HTTP或其他协议,那么要借助第三方包.
+当下,使用asyncio实现HTTP客户端和服务器时,使用的似乎都是aiohttp包
+示例18-5下载国旗的flags_asyncio.py脚本的完整代码清单.
+运作简述:
+1)首先,在download_many函数中获取一个时间循环,处理调用download_one函数生成的几个协程对象
+2)asyncio事件循环依次激活各个协程.
+3)客户代码中的协程(如get_flag)使用yield from把职责委托给库里的协程(如aiohttp.request)时,控制权交换事件循环,执行之前排定的协程
+4)事件循环通过基于回调的底层API,在阻塞的操作执行完毕后获得通知
+5)获得通知后,主循环把结果发给暂停的协程
+6)协程向前执行到下一个yield from表达式,例如get_flag函数中的yield from resp.read().事件循环再次得到控制权,重复第4~6步,直到事件循环终止.
+基本流程:在一个单线程程序中使用主循环依次激活队列里的协程.各个协程向前执行几步,然后把控制权让给主循环,主循环再激活队列中的下一个协程.
+示例18-5 flags_asyncio.py:使用asyncio和aiohttp包实现的异步下载脚本
+#事件循环与上下文管理器.客户端代码绝不会直接创建事件循环,而是调用asyncio.get_event_loop()函数,获取事件循环的引用.
+而且我们的代码不"拥有"事件循环,因此关闭事件循环会出错.
+asyncio.wait()协程的参数是一个由期物或协程构成的可迭代对象;wait会分别把各个协程包装进一个Task对象.
+最终的结果是,wait处理的所有对象都通过某种方式变成Future类的实例.wait是协程函数,因此返回的是一个协程或生成器对象;
+wait_coro变量中存储的正是这种对象.为了驱动协程,我们把协程传给loop.run_until_complete(...)方法
+loop.run_until_complete方法的参数是一个期物或协程.如果是协程,run_until_complete方法与wait函数一样,
+把协程包装进一个Task对象中.协程,期物和任务都能由yield from驱动,这正是run_until_complete方法对wait函数返回的wait_coro
+对象所作的事.wait_coro运行结束后返回一个元组,第一个元素是一系列结束的期物,第二个元素是一系列未结束的期物.
+但是wait函数有两个关键字参数,如果设定了可能会返回未结束的期物;这两个参数是timeout和return_when
+注意,不能重用flags.py脚本中的get_flag函数,因为那个函数用到了requests库,执行的阻塞型I/O操作.为了使用asyncio包,我们
+必须把每个访问网络的函数改成异步版,使用yield from处理网络操作,这样才能把控制权交还事件循环.
+在get_flag函数中使用yield from,意味着它必须像协程那样驱动
+因此,不能重用flags_threadpool.py中的download_one函数.示例18-5中的代码使用yield from驱动get_flag函数,因此
+download_one函数本身也得是个协程.每次请求时,download_many函数会创建一个download_one协程对象;这些协程对象先使用
+asyncio.wait协程包装,然后由loop.run_until_complete方法驱动.
+理解总体逻辑时,忽略yield from
+yield from foo句法能防止阻塞,是因为当前协程(即包含yield from代码的委派生成器)暂停后,控制权回到事件循环手中,
+再去驱动其他协程;foo期物对协程运行完毕后,把结果返回给暂停的协程,将其恢复.
+
+yield from的用法:
+# 使用yield from链接的多个协程最终必须由不是协程的调用方驱动,调用方显示或隐式(例如,for循环)在最外层委派生成器上调用next(...)函数或.send(...)方法
+# 链条中最内层的子生成器必须是简单的生成器(只使用yield)或可迭代的对象
+在asyncio包的API中使用yield from时,这两点都成立,不过要注意下述细节:
+# 我们编写的协程链条始终通过把最外层委派生成器传给asyncio包API中的某个函数(如loop.run_until_complete(...))驱动.
+  也就是说,使用asyncio包时,我们编写的代码不通过调用next(...)函数或.send(...)方法驱动协程--这一点由asyncio包实现的事件循环去做
+# 我们编写的协程链条最终通过yield from把职责委托给asyncio包中的某个协程函数或协程方法(例如示例18-2中的yield from asyncio.sleep(...)),
+  或者其他库中实现高层协议的协程(例如示例18-5中的get_flag协程里的resp = yield from aiohttp.request('GET', url))
+  也就是说,最内层的子生成器是库中真正执行I/O操作的函数,而不是我们自己编写的函数
+概括起来就是:使用asyncio包时,我们编写的异步代码中包含由asyncio本身驱动的协程(即委派生成器),而生成器最终把职责委托
+给asyncio包或第三方库(如aiohttp)中的协程.这种处理方式相当于架起了管道,让asyncio事件循环(通过我们编写的协程)驱动执行底层异步I/O操作的库函数.
+
+
+flags_asyncio.py脚本和flags.py脚本都在单个线程中运行,前者怎么会比后者快5倍?
+18.3 避免阻塞型调用
+避免阻塞型调用中止整个应用程序的进程的两种方法:
+# 在单独的线程中运行各个阻塞型操作
+# 把每个阻塞型操作转换成非阻塞的异步调用使用
+多个线程是可以的,但是各个操作系统线程(Python使用的是这种线程)消耗的内存达兆字节(具体的量取决于操作系统种类).
+如果要处理几千个连接,而每个连接都使用一个线程的话,我们负担不起.
+为了降低内存的消耗,通常使用回调来实现异步调用.这是一种低层概念,类似于所有并发机制中最古老,最原始的那种--硬件中断.
+使用回调时,我们不等待响应,而是注册一个函数,在发生某件事时调用.这样,所以调用都是非阻塞的.因为回调简单,而且消耗低,
+当然,只有异步应用程序底层的时间循环能依靠基础设置的中断,线程,轮询和后台进程等,确保多个并发请求能取得进展并最终完成,
+这样才能使用回调.时间循环获得响应后,会回过头来调用我们指定的回调.不过,如果做法正确,事件循环和应用代码共用的主线程绝不会阻塞.
+把生成器当做协程使用是异步编程的另一种方式.对事件循环来说,调用回调与暂停的协程上调用.send()方法效果差不多.
+各个暂停的协程是要消耗内存,但是比线程消耗的内存数量级小.而且,
+协程能避免可怕的"回调地狱";
+为了尽量提高性能,save_flag函数应该执行异步操作,可是asyncio包目前没有提供异步文件系统API.如果这是应用的瓶颈,
+可以使用loop.run_in_executor方法,在线程池中运行save_flag函数
+
+
+18.4 改进asyncio下载脚本
+18.4.1 使用asyncio.as_completed函数
+在示例18-5中,我把一个协程列表传给asyncio.wait函数,经由loop.run_until_complete方法驱动,全部协程运行完毕后,这个
+函数会返回所有下载结果.可以,为了更新进度条,各个协程运行结束后,就要立即获取结果.在线程池版示例中,为了集成进度条,
+我们使用的是as_completed生成器函数;幸好,asyncio包提供了这个生成器函数的对应版本.
+asyncio.Semaphore类.是同步装置,用于限制并发请求数量(semaphore:信号灯)
+对于我们分析的这种网络客户端代码来说,一定要使用某种限流机制,防止向服务器发起太多并发请求,因为如果服务器过载,那么系统的整体性能可能会下降.
+Semaphore对象维护着一个内部计数器,若在对象上调用.acquire()协程方法,计数器则递减;若在对象上调用.release()协程方法,计数器则递增.计数器的初始值在实例化Semaphore时设定,如downloader_coro函数中:
+    semaphore = asyncio.Semaphore(concur_req)
+如果计数器大于0,那么调用.acquire()方法不会阻塞;可是,如果计数器为0,那么.acquire()方法会阻塞调用这个方法的协程,直到
+其他协程在同一个Semaphore对象上调用.release()方法,让计数器递增
+可以不调用.acquire()或.release()方法,而是当做上下文管理器使用:
+    with (yield from semaphore):
+        image = yield from get_flag(base_url, cc)
+这段代码保证,任何时候都不会超过concur_req个get_flag协程启动.
+
+asyncio.as_completed函数返回的期物与传给as_completed函数的期物可能不同.
+在asyncio包内部,我们提供的期物会被替换成生成相同结果的期物
+
+
+18.4.2 使用Executor对象,防止阻塞事件循环
+Python社区往往会忽略一个事实--访问本地文件系统会阻塞,想当然地认为这种操作不会受网络访问的高延迟影响(这也极难预料).
+与之相比,Node.js程序员则始终谨记,所以文件系统函数都会阻塞,因为这些函数的签名中指明了要有回调.
+硬盘I/O阻塞会浪费几百万个CPU周期,而这可能会对应用程序的性能产生重大影响
+flags2_asyncio.py脚本中,save_flag函数阻塞了客户代码与asyncio事件循环共用的唯一线程,因此保存文件时,整个应用程序都会冻结.
+这个问题的解决方法是,使用事件循环对象的run_in_executor方法
+asyncio的事件循环在背后维护着一个ThreadPoolExecutor对象,我们可以调用run_in_executor方法,把可调用的对象发给它执行.
+...
+    loop = asyncio.get_event_loop() # 1.获取事件循环对象的引用
+    loop.run_in_executor(None, # 2.run_in_executor方法的第一个参数是Executor实例;如果设为None,使用事件循环的默认ThreadPoolExecutor实例
+            save_flag, image, cc.lower() + '.gif') # 3.余下的参数是可调用的对象,以及可调用对象的位置参数
+...
+
+
+
+18.5 从回调到期物和协程
+与经典的回调式编程相比,协程有哪些改进.
+"回调地狱":如果一个操作需要依赖之前操作的结果,那就得嵌套回调.
+如果要连续做3次异步调用,那就需要嵌套3层回调
+示例18-11 Python中的回调地狱:链式回调
+def stage1(response1):
+    request2 = step1(response1)
+    api_call2(request2, stage2)
+def stage2(response2):
+    request3 = step2(response2)
+    api_call3(request3, stage3)
+def stage1(response3):
+    step3(response3)
+api_call1(request1, stage1)
+
+每个函数做一部分工作,设置下一个回调,然后返回,让事件循环继续运行.这样,所有本地的上下文都会丢失.执行下一个回调时,就无法获取request2的值.
+如果需要那个值,那就必须依靠闭包,或者把它存储在外部数据结构中,以便在处理过程的不同阶段使用.
+在协程中,如果要连续执行3个异步操作,只需要使用yield3次,让事件循环继续运行.准备好结果后,调用.send()方法,激活协程.
+对事件循环来说,这种做法与调用回调类似.但是对使用协程式异步API的用户来说,情况就大为不同了:
+3次操作都是在同一个函数定义体中,像是顺序代码,能在处理过程中使用局部变量保留整个任务的上下文.
+示例18-12 使用协程和yield from结构做异步编程,无需使用回调
+@asyncio.coroutine
+def three_stages(request1):
+    response1 = yield from api_call1(request1)
+    # 第一步
+    request2 = step1(response1)
+    response2 = yield from api_call2(request2)
+    # 第二步
+    request3 = step2(response2)
+    response3 = yield from api_call3(request3)
+    # 第三步
+    step3(response3)
+loop.create_task(three_stage(request1)) # 必须显示调度执行
+操作的三个步骤依次写在同一个函数中,这样,后续处理便于使用前一步的结果;而且提供了上下文,能通过异常来报告错误
+
+每次下载发起多次请求
+在同一个任务中发起多个请求,这对线程版脚本来说很容易:只需接连发起两次请求,阻塞线程两次,把国家代码和国家名称保存在局部变量中,在保存文件时使用.
+如果想在异步脚本中使用回调做到这一点:国家代码和名称要放在闭包中传来传去,或者保存在某个地方,在保存文件时使用,这么做是因为
+各个回调在不同的局部上下文中运行.
+协程和yield from结构能缓解这个问题.
+有变化的内容:
+download_one:
+    现在,这个协程使用yield from把职责委托给get_flag协程和新添的get_country协程
+get_flag
+    这个协程的大多数代码移到新添的http_get协程中了,以便也能在get_country协程中使用
+get_country
+    这个协程获取国家代码相应的metadata.json文件,从文件中读取国家名称
+http_get
+    从Web获取文件的通用代码
+如果内容类型中包含'json',或者url以.json结尾,那么在响应上调用.json()方法,解析响应,返回一个Python数据结构--在这里是一个字典
+否则,使用.read()方法读取原始字节
+
+yield from使用基本原则:yield from只能用于协程和asyncio.Future实例(包括Task实例)
+
+
+18.6 使用asyncio包编写服务器
+用于查找Unicode字符,分别使用简单的TCP协议和HTTP协议实现.
+18.6.1 使用asyncio包编写TCP服务器
+charfinder.py模块,这个模块没有任何并发.
+可以在命令行中使用charfinder.py脚本查找字符,
+或为使用asyncio包编写的服务器提供支持
+charfinder模块读取Python内建的Unicode数据库,为每个字符名称中的每个单词建立索引,然后倒排索引,存进一个字典.
+示例18-14 tcp_charfinder.py:使用asyncio.start_server函数实现的简易TCP服务器;
