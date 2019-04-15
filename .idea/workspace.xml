@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/chapter18/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter18/spinner_asyncio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter18/spinner_thread.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,55 +16,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="457">
+              <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt">
+        <entry file="file://$PROJECT_DIR$/chapter18/spinner_asyncio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="137" selection-start-line="137" selection-end-line="137" />
+            <state relative-caret-position="190">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter17/demo_executor_map.py">
+        <entry file="file://$PROJECT_DIR$/chapter18/spinner_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+            <state relative-caret-position="357">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
-                <element signature="e#233#265#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="38" selection-start-line="9" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool_ac.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1197">
-              <caret line="64" column="48" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
-              <folding>
-                <element signature="e#284#314#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chapter17/flags.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="34" column="94" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="94" />
-              <folding>
-                <element signature="e#204#213#0" expanded="true" />
+                <element signature="e#215#231#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,9 +61,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/chapter12/12-7.py" />
-        <option value="$PROJECT_DIR$/chapter12/12-8.py" />
-        <option value="$PROJECT_DIR$/chapter12/第12章继承的优缺点.txt" />
         <option value="$PROJECT_DIR$/chapter13/vector.py" />
         <option value="$PROJECT_DIR$/chapter13/bingoaddable.py" />
         <option value="$PROJECT_DIR$/chapter13/第13章正确重载运算符.txt" />
@@ -133,6 +109,9 @@
         <option value="$PROJECT_DIR$/chapter17/flags_threadpool_ac.py" />
         <option value="$PROJECT_DIR$/chapter17/demo_executor_map.py" />
         <option value="$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt" />
+        <option value="$PROJECT_DIR$/chapter18/spinner_thread.py" />
+        <option value="$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发" />
+        <option value="$PROJECT_DIR$/chapter18/spinner_asyncio.py" />
       </list>
     </option>
   </component>
@@ -146,7 +125,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,10 +137,16 @@
               <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
               <item name="chapter17" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+              <item name="chapter18" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,7 +175,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.demo_executor_map">
+  <component name="RunManager" selected="Python.spinner_thread">
     <configuration name="coroaverager1" type="PythonConfigurationType" factoryName="Python">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -226,27 +210,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter16/coroaverager3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="coroaverager4" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fluent_python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter16" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter16/coroaverager4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -297,6 +260,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="spinner_thread" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fluent_python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter18" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter18/spinner_thread.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="taxi_sim" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -320,11 +304,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.spinner_thread" />
         <item itemvalue="Python.demo_executor_map" />
         <item itemvalue="Python.flags" />
         <item itemvalue="Python.taxi_sim" />
         <item itemvalue="Python.coroaverager3" />
-        <item itemvalue="Python.coroaverager4" />
       </list>
     </recent_temporary>
   </component>
@@ -392,14 +376,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="753" y="0" width="790" height="831" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24358974" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24270557" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4928717" weight="0.42836675" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4928717" weight="0.2546495" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39111748" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -407,7 +390,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683544" weight="0.16045845" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50101835" side_tool="true" weight="0.3296582" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.86558044" visible="true" weight="0.32188842" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.86558044" weight="0.32188842" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -439,36 +422,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chapter14/sentence_iter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="50" column="3" lean-forward="true" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
-          <folding>
-            <element signature="e#168#177#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/sentence_gen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-          <folding>
-            <element signature="e#167#176#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/sentence_gen2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
-          <folding>
-            <element signature="e#172#181#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chapter14/gen_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -740,13 +693,13 @@
     <entry file="file://$PROJECT_DIR$/chapter17/第17章使用期物处理并发.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
+          <caret line="144" column="41" selection-start-line="144" selection-start-column="41" selection-end-line="144" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter17/demo_executor_map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
+        <state relative-caret-position="249">
           <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
           <folding>
             <element signature="e#233#265#0" expanded="true" />
@@ -756,14 +709,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
+        <state relative-caret-position="318">
           <caret line="38" selection-start-line="9" selection-end-line="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter17/flags_threadpool_ac.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
+        <state relative-caret-position="204">
           <caret line="64" column="48" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
           <folding>
             <element signature="e#284#314#0" expanded="true" />
@@ -773,11 +726,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter17/flags.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="19">
           <caret line="34" column="94" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="94" />
           <folding>
             <element signature="e#204#213#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter18/spinner_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#215#231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter18/spinner_asyncio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
