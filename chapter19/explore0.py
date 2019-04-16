@@ -32,17 +32,19 @@ class FrozenJSON:
         else:  # 8.如果既不是字典也不是列表,原封不动地返回元素
             return obj
 
+
 # 示例19-4 FrozenJSON类能读取属性,如name,还能调用方法,如.keys()和.items()
 from osconfeed import load
+
 raw_feed = load()
-feed = FrozenJSON(raw_feed) # 1.传入嵌套的字典和列表组成的raw_feed,创建一个FrozenJSON示例
-print(len(feed.Schedule.speakers))# 2.FrozenJSON实例能使用属性表示法遍历嵌套的字典
-print(sorted(feed.Schedule.keys())) # 3.也可以使用底层字典的方法,例如.keys(),获取记录集合的名称
-for key, value in sorted(feed.Schedule.items()): # 4.使用items()方法获取各个记录集合及其内容,然后显示各个记录集合中元素的数量
+feed = FrozenJSON(raw_feed)  # 1.传入嵌套的字典和列表组成的raw_feed,创建一个FrozenJSON示例
+print(len(feed.Schedule.speakers))  # 2.FrozenJSON实例能使用属性表示法遍历嵌套的字典
+print(sorted(feed.Schedule.keys()))  # 3.也可以使用底层字典的方法,例如.keys(),获取记录集合的名称
+for key, value in sorted(feed.Schedule.items()):  # 4.使用items()方法获取各个记录集合及其内容,然后显示各个记录集合中元素的数量
     print('{:3} {}'.format(len(value), key))
-print(feed.Schedule.speakers[-1].name) # 5.列表,例如feed.Schedule.speakers,仍是列表;但是,如果里面的元素是映射,会转换成FrozenJSON对象
+print(feed.Schedule.speakers[-1].name)  # 5.列表,例如feed.Schedule.speakers,仍是列表;但是,如果里面的元素是映射,会转换成FrozenJSON对象
 talk = feed.Schedule.events[0]
-print(type(talk)) # 6.
+print(type(talk))  # 6.
 print(talk.name)
-print(talk.speakers) # 7.
+print(talk.speakers)  # 7.
 # print(talk.flavor) # 8.读取不存在的属性会抛出KeyError异常,而不是抛出通常的AttributeError异常

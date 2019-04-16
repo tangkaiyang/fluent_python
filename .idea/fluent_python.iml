@@ -16,7 +16,7 @@
       <sourceFolder url="file://$MODULE_DIR$/chapter18" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chapter19" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (python3_practise)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">

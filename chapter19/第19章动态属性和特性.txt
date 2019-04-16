@@ -31,3 +31,292 @@ FrozenJSON类的关键是__getattr__方法.
 这么做没问题,因为数据集不大,而且这个脚本只用于访问或转换数据
 从随机数据源中生成或效仿动态属性名的脚本都必须处理同一个问题:
 原始数据中的键可能不适合作为属性名
+
+
+19.1.2处理无效属性名
+FrozenJSON类有个缺陷:没有对名称为Python关键字的属性做特殊处理.
+如:grad = FrozenJSON({'name': 'Jim Bo', 'class': 1982})
+此时无法读取grad.class的值,因为在Python中class是保留字:
+grad.class --> SyntaxError: invalid syntax
+当然,可以这么做
+getattr(grad, 'class') --> 1982
+但是,FrozenJSON类的目的是为了便于访问数据,因此更好的方法是检查传给FrozenJSON.__init__方法的映射中是否有键的名称为关键字,
+如果有,那么在键名后加上_,然后通过下述方式读取:
+grad.class_ --> 1982
+示例19-6 explore1.py:在名称为Python关键字的属性后面加_
+如果JSON对象中的键不是有效的Python标识符,也会遇到类似的问题
+x = FrozenJSON({'2be': 'or not'})
+x.2be --> SyntaxError: invalid syntax
+这种有问题的键在Python3中易于检测,因为str类提供的s.isidentifier()方法能根据语言的语法判断s是否为有效的Python标识符.
+但是,把无效的标识符变成有效的属性名缺不容易.对此,有两种简单的解决方法,
+一个是抛出异常,
+另一个是把无效的键换成通用名称.例如attr_0, attr_1,等等
+对动态属性的名称做了一些处理之后,我们要分析FrozenJSON类的另一个重要功能--类方法build的逻辑.
+这个方法把嵌套结构转换成FrozenJSON实例或FrozenJSON实例列表,因此__getattr__方法使用这个方法访问属性时,能为不同的值返回不同类型的对象
+
+
+除了在类方法中实现这样的逻辑之外,
+还可以在特殊的__new__方法中实现
+19.1.3 使用__new__方法以灵活的方式创建对象
+通常__init__称为构造方法,
+其实,用于构建实例的是特殊方法__new__:
+这是个类方法(使用特殊方式处理,因此不必使用@classmethod装饰器),必须返回一个实例
+返回的实例会作为第一个参数(即self)传给__init__方法.
+因为调用__init__方法时要传入实例,而且禁止返回任何值,所以__init__方法其实是"初始化方法".
+真正的构造方法是__new__.
+从__new__方法到__init__方法,是最常见的,但是不是唯一的.
+__new__方法也可以返回其他类的实例,此时解释器不会调用__init__方法
+Python构建对象的过程可以使用下述伪代码概括:
+# 构建对象的伪代码
+def object_maker(the_class, some_arg):
+    new_object = the_class.__new__(some_arg)
+    if isinstance(new_object, the_class):
+        the_class.__init__(new_object, some_arg)
+    return new_object
+# 下述两个语句的作用基本等效
+x = Foo('bar')
+x = object_maker(Foo, 'bar')
+示例19-7是FrozenJSON类的另一个版本,把之前的类方法build中的逻辑移到了__new__方法中.
+explore2.py
+__new__方法的第一个参数是类,因为创建的对象通常是那个类的实例.所以,在FrozenJSON.__new__方法中,super().__new__(cls)表达式会调用
+object.__new__(FrozenJSON),而object类构建的实例其实是FrozenJSON实例,即那个实例的__class__属性存储的是FrozenJSON类的引用.
+不过真正的构建操作是由解释器调用C语言实现的object.__new__方法执行
+
+
+调整数据结构,以便自动获取所链接的记录
+19.1.4 使用shelve模块调整OSCON数据源的结构
+shelve(架子)模块
+pickle(泡菜):Python对象序列化格式的名字,还是在那个格式与对象之间互相转换的某个模块的名字,
+泡菜坛子摆放着架子上,因此shelve模块提供了pickle存储方式
+shelve.open高阶函数返回一个shelve.Shelf实例,简单的键值对象数据库(由dbm模块支持):
+# shelve.Shelf是abc.MutableMapping的子类,因此提供了处理映射类型的重要方法
+# shelve.Shelf类还提供了几个管理I/O的方法,如sync和close;它也是一个上下文管理器
+# 只要把新值赋予键,就会保存键和值
+# 键必须是字符串
+# 值必须是pickle模块能处理的对象
+shelve模块未识别OSCON的日程数据提供了一种简单有效的方式.
+从JSON文件中读取所有记录,将其存在一个shelve.Shelf对象中,键有记录类型和编号组成(例如,'event.33950'或'speaker.3471')
+,而值是我们即将定义的Record类的实例
+示例19-9 schedule1.py
+示例19-9中定义的Record类太简单了,为什么之前使用更复杂的FrozenJSON类.
+# 一.FrozenJSON类要递归转换嵌套的映射和列表;而Record类不需要这么做,因为转换号的数据集中没有嵌套的映射和列表,记录中只有
+# 字符串,整数,字符串列表和整数列表.
+# 二.FrozenJSON类要访问内嵌的__data属性(值是字典,用于调用keys等方法),而现在我们也不需要这么做了
+Python标准库中至少有两个与Record类似的类,其实例可以有任意个属性,由传给否早方法的关键字参数构建
+multiprocessing.Namespace类和argparse.Namespace类
+实现Record,说明一个重要的做法:在__init__方法中更新实例的__dict__属性
+
+
+19.1.5 使用特性获取链接的记录
+对应从Shelf对象中获取的event记录来说,读取它的venue或speakers属性时返回的不是编号,而是完整的记录对象
+示例19-10schedule2.py
+几个类:
+Record
+    __init__方法与schedule1.py脚本中的一样;为了辅助测试,增加了__eq__方法
+DbRecord
+    Record类的子类,添加了__db类属性,用于设置和获取__db属性的set_db和get_db静态方法,用于从数据库中获取记录的fetch类方法,
+    以及辅助调试和测试的__repr__方法
+Event
+    DbRecord类的子类,添加了用于获取所链接记录的venue和speakers属性,以及特殊的__repr__方法
+改进的Record类和两个子类(DbRecord和Event)的UML类图
+    Record: __init__, __eq__
+    DbRecord: _db;set_db{staticmethod},get_db{staticmethod}, fetch{classmethod}, __repr__
+    Event: venue{property}, speakers{property};__repr__
+DbRecord.__db类属性的作用是存储打开的shelve.Shelf数据库引用,以便在需要使用数据库的DbRecord.fetch方法及Event.venue
+和Event.speakers属性中使用.我们把__db设为私有类属性,然后定义了普通的读值方法和设值方法,以防不小心覆盖了__db属性的值.
+基于一个重要的原因,没有使用特性去管理__db属性:特性是用于管理实例属性的类属性
+示例19-11 schedule2.py:导入模块,定义常量和增强的Record类
+示例19-12 MissingDatabaseError类和DbRecord类
+示例19-13 Event类
+返回self.__class__.fetch(key)而不是self.fetch(key),防止事件记录中有fetch键
+从数据中创建实例属性的名称时肯定有可能会引入缺陷,因为类属性(例如方法)可能被遮盖,或者由于意外覆盖现有的实例属性而丢失数据.
+如果Record类的行为更像映射时,可以把动态的__getattr__方法换成动态的__getitem__方法,这样就不会出现由于覆盖或遮盖而引起的缺陷了.
+示例19-14 load_db函数
+
+
+19.2 使用特性验证属性
+创建一个可读写的特性
+19.2.1 LineItem类第1版:表示订单中商品的类
+示例19-15 bulkfood_v1.py
+示例19-16 重量为负值时,金额小计为负值
+其他部分以及直接访问item.weight,所以不能直接设定商品的weight属性.
+符合Python风格的做法是,把数据属性换成特性
+19.2.2 LineItem类第2版:能验证值的特性
+实现特性之后,我们可以使用读值方法和设值方法,但是LineItem类的接口保持不变(即,设值LineItem对象的weight属性依然协程raisins.weight = 12)
+示例19-17 bulkfood_v2.py:可读写的weight特性
+"当我在自己的程序中发现用到了模式,我觉得这就表明某个地方出错了"
+取出重复的方法是抽象.抽象特性的定义方式有两种:使用特性工厂函数,或者使用描述符类(更灵活)
+其实,特性本身就是使用描述符类实现的.
+
+19.3 特性全解析
+虽然内置的property经常用作装饰器,但其实它是一个类.
+在Python中,函数和类通常可以互换,因为二者都是可调用的对象,而且没有实例化对象的new运算符,所以调用构造方法与工厂函数没有区别.
+此外,只要能返回新的可调用对象,代替被装饰的函数,二者都可以用作装饰器
+property构造方法的完整签名
+property(fget=None, fset=None, fdel=None, doc=None)
+所有参数都是可选的,如果没有把函数传给某个参数,那么得到的特性对象就不允许执行相应的操作
+示例19-18 bulkfood_v2b.py
+
+19.3.1 特性会覆盖实例属性
+特性都是类属性,但是特性管理的其实是实例属性的存取
+如果实例和所属的类又同名数据属性,那么实例属性会覆盖(或称遮盖)类属性--至少通过哪个实例读取属性时是这样的
+示例19-19 实例属性遮盖类的数据属性
+class Class: # 1.定义Class类,data数据属性和prop特性
+    data = 'the class data attr'
+    @property
+    def prop(self):
+        return 'the prop value'
+
+obj = Class()
+vars(obj) # 2.vars函数返回obj的__dict__属性,表明没有实例属性
+obj.data # 3.读取obj.data,获取的是Class.data的值
+obj.data = 'bar' # 4.为obj.data赋值,创建一个实例属性
+vars(obj) # 5.审查实例,查看实例属性
+obj.data # 6.读取obj.data,获取的是实例属性的值.从obj实例中读取属性时,实例属性data会遮盖类属性data
+Class.data # 7.Class.data属性的值完好无损
+示例19-20实例属性不会遮盖类属性
+Class.prop # 1.直接从Class中读取的prop特性,获取的是特性对象本身,不会运行特性的读值方法
+obj.prop # 2.读取obj.prop会执行特性的读值方法
+obj.prop = 'foo' # 3.尝试设置prop实例属性,结果失败
+obj.__dict__['prop'] = 'foo' # 4.直接把'prop'存入obj.__dict__
+vars(obj) # 5.obj现在有两个实例属性:data和prop
+obj.prop # 6.读取obj.prop时仍会运行特性的读值方法.特性没被实例属性覆盖
+Class.prop = 'baz' # 7.覆盖Class.prop特性,销毁特性对象
+obj.prop # 8.obj.prop获取的实例属性.Class.prop不是特性了,因此不会覆盖obj.prop
+示例19-21 新添的类属性遮盖现有的实例属性
+obj.data # 1.obj.data获取的是实例属性data
+Class.data # 2.Class.data获取的是类属性data
+Class.data = property(lambda self: 'the "data" prop value') # 3.使用新特性覆盖Class.data
+obj.data # 4.obj.data被Class.data特性遮盖了
+def Class.data #5.删除特性
+obj.data #6.恢复原样,obj.data获取的是实例属性data
+本节的主要观点是,obj.attr这样的表达式不会从obj开始寻找attr,而是从obj.__class__开始,而且,仅当类中没有名为attr的特性时,
+Python才会在obj实例中寻找.这条规则不仅适用于特性,还适用于一整类描述符--
+覆盖性描述符(overriding descriptor)
+
+
+如何把文档依附到特性上
+19.3.2 特性的文档
+控制台中的help()函数或者IDE等工具需要显示特性的文档时,会从特性的__doc__属性中提取信息
+如果使用经典调用句法,为property对象设置文档字符串的方法是传入doc参数:
+weight = property(get_weight, set_weight, doc='weight in kilograms')
+使用装饰器创建property对象时,读值方法(有@property装饰器的方法)的文档字符串作为一个整体,变成特性的文档
+help(Foo.bar)和help(Foo)
+
+
+19.4 定义一个特性工厂函数
+quantity的特性工厂函数
+示例19-23是LineItem类的简洁版,用到了quantity特性的两个实例:
+一个用于管理weight属性,另一个用于管理price属性
+示例19-23 bulkfood_v2prop.py:使用特性工厂函数quantity
+特性是类属性.构建各个quantity特性对象时,要传入LineItem实例属性的名称,让特性管理.
+weight = quantity('weight')
+这里很难避免重复输入,因为特性根本不知道要绑定哪个类属性名.
+赋值语句的右边先计算,因此调用quantity()时,weight类属性还不存在
+示例19-24 列出quantity特性工厂函数的实现
+示例19-24 bulkfood_v2prop.py: quantity特性工厂函数
+使用传统方式定义特性时,用于存储值的属性名硬编码在读值方法和设值方法中.但是,这里的
+qty_getter和qty_setter函数是通用的,要依靠storage_name变量判断从__dict__中获取哪个属性,
+或者设置哪个属性.每次调用quantity工厂函数构建属性时,都要把storage_name参数设为独一无二的值
+在工厂函数的最后一行,我们使用property对象包装qty_getter和qty_setter函数.需要运行这两个函数时,他们会
+闭包中读取storage_name,确定从哪里获取属性的值,或者在哪里存储属性的值
+
+示例19-25中,创建并审查了一个LineItem示例,说明存储值的是哪个属性
+示例19-25 bulkfood_v2prop.py: quantity特性工厂函数
+注意,工厂函数构建的特性利用了:weight特性覆盖了weight实例属性.
+因为对self.weight或nutmeg.weight的每个引用都由特性函数处理,只有直接存取__dict__属性才能跳过特性的处理逻辑
+在真实的系统中,分散在多个类中的多个字段可能要做同样的验证,此时最好把quantity工厂函数放在使用工具模块中,以便重复使用.
+最终可能要重构那个简单的工厂函数,改成更易扩展的描述符类,然后使用专门的子类执行不同的验证
+
+
+删除属性
+19.5 处理属性删除操作
+对象的属性可以使用del语句删除:del my_object.an_attribute
+使用Python编程时不常删除属性,通过特性删除属性更少见.但是Python支持这么做
+定义特性时,可以使用@my_property.deleter装饰器包装一个方法,负责删除特性管理的属性.
+示例19-26 blackknight.py: 灵感来自电影<<巨蟒与圣杯>>中的黑衣骑士角色
+
+
+特性是个强大的功能,不过有时更适合使用简单的或底层的替代方案.
+回顾Python为动态属性编程提供的部分核心API
+19.6 处理属性的重要属性和函数
+Python为处理动态属性而提供的内置函数和特殊的方法.
+19.6.1 影响属性处理方式的特殊属性
+后面几节中的很多函数和特殊方法,其行为受下属3个特殊属性的影响
+__class__
+    对象所属类的引用(即obj.__class__与type(obj)的作用相同).Python的某些特殊方法,例如__getattr__,只在对象的类中寻找,而不再实例中寻找
+__dict__
+    一个映射,存储对象或类的可写属性.有__dict__属性的对象,任何时候都能随意设置新属性.如果类又__slots__属性,它的实例可能没有__dict__属性
+__slots__
+    类可以定义这个类属性,限制实例能有哪些属性.
+    __slots__属性的值是一个字符串组成的元组,指明允许有的属性.
+    如果__slots__中没有'__dict__',那么该类的实例没有__dict__属性,实例只允许有指定名称的属性
+    # __slots__属性的值虽然可以是一个列表,但是最好始终使用元组,因为处理完类的定义体之后再修改__slots__列表没有任何作用,
+    # 所以使用可变的序列容易让人误解
+19.6.2 处理属性的内置函数
+下述5个内置函数对对象的属性做读,写和内省操作
+dir([object])
+    列出对象的大多数属性.
+    dir函数的目的是交互式使用,因此没有提供完整的属性列表,只列出一组"重要的"属性名
+    dir函数能审查有或没有__dict__属性的对象.
+    dir函数不会列出__dict__属性本身,但会列出其中的键.
+    dir函数也不会列出类的几个特殊属性,例如__mro__,__bases__和__name__
+    如果没有指定可选的object参数,dir函数会列出当前作用域中的名称
+getattr(object, name[, default])
+    从object对象中获取name字符串对应的属性.
+    获取的属性可能来自对象所属的类或超类
+    如果没有指定的属性,getattr函数抛出AttributeError异常,
+    或者返回default参数的值(如果设定了这个参数的话)
+hasattr(object, name)
+    如果object对象中存在指定的属性,或者能以某种方式(例如继承)通过object对象获取指定的属性,返回True.
+    # 这个函数的实现方法是调用getattr(object, name)函数,看看是否抛出AttributeError异常
+setattr(object, name, value)
+    把object对象指定属性的值设为value,前提是object对象能接受那个值.
+    这个函数可能会创建一个新属性,或者覆盖现有的属性
+vars([object])
+    返回object对象的__dict__属性;如果实例所属的类定义了__slots__属性,实例没有__dict__属性,那么vars函数不能处理那个实例
+    (相反,dir函数能处理这样的实例).如果没有指定参数,那么vars()函数的作用与locals()函数一样:
+    返回表示本地作用域的字典
+19.6.3 处理属性的特殊方法
+在用户自己定义的类中,下述特殊方法用于获取,设置,删除和列出属性
+使用点号或内置的getattr,hasattr和setattr函数存取属性都会触发下述列表中相应的特殊方法.
+但是,直接通过实例的__dict__属性读写属性不会触发这些特殊方法--如果需要,通常会使用这种方式跳过特殊方法
+# 对用户自己定义的类来说,如果隐式调用特殊方法,仅当特殊方法在对象所属的的类型上定义,
+# 而不是在对象的实例字典中定义时,才能确保调用成功
+也就是说,要假定特殊方法从类上获取,即便操作目标是实例也是如此.因此,特殊方法不会被同名实例属性遮盖
+在下述示例中,假设有个名为Class的类,obj是Class类的实例,attr是obj的属性
+不管是使用点号存取属性,还是使用19.6.2节列出的某个内置函数,都会触发下述特殊方法中的一个.
+例如,obj.attr和getattr(obj, 'attr', 42)都会触发Class.__getattribute__(obj, 'attr')方法.
+__delattr__(self, name)
+    只要使用del语句删除属性,就会调用这个方法.
+    例如,del obj.attr语句触发Class.__delattr__(obj, 'attr')方法
+__dir__(self)
+    把对象传给dir函数时调用,列出属性.例如,
+    dir(obj)触发Class.__dir__(obj)方法
+__getattr__(self, name)
+    仅当获取指定的属性失败,搜索过obj,Class和超类之后调用.
+    表达式obj.no_such_attr,getattr(obj, 'no_such_attr')和hasattr(obj, 'no_such_attr')可能会触发
+    Class.__getattr__(obj, 'no_such_attr')方法,但是,
+    仅当在obj,Class和超类中找不到指定的属性时才会触发
+__getattribute__(self, name)
+    尝试获取指定的属性时总会调用这个方法,不过,寻找的属性是特殊属性或特殊方法时除外.
+    点号与getattr和hasattr内置函数会触发这个方法.
+    调用__getattribute__方法且抛出AttributeError异常时,才会调用__getattr__方法.
+    为了在获取obj实例的属性时不导致无限递归,__getattribute__方法的实现要使用super.__getattribute__(obj, name)
+__setattr__(self, name, value)
+    尝试设置指定的属性时总会调用这个方法.点号和setattr内置函数会触发这个方法.
+    例如,obj.attr = 42和setattr(obj, 'attr', 42)都会触发Class.__setattr__(obj, 'attr', 42)方法.
+其实,特殊方法__getattribute__和__setattr__不管怎样都会调用,几乎会影响每一次属性存取,
+因此比__getattr__方法(只处理不存在的属性名)更难正确使用.
+
+
+19.7 本章小结
+动态属性编程.
+FrozenJSON类,把嵌套的字典和列表转换成嵌套的FrozenJSON实例和实例列表.
+JSON源转换成一个shelve.Shelf数据库,把序列化的Record实例存在里面.
+第2版对Record类做了扩展:一个是DbRecord类,集成数据库操作;另一个是Event类,通过特性自动获取所链接的记录
+特性:
+特性工厂函数
+闭包和被特性覆盖的实例属性
+使用特性处理删除属性的操作,
+为支持属性元编程而提供的重要的特殊属性,内置函数和特殊方法

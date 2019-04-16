@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter19/explore0.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/blackknight.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/bulkfood_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/bulkfood_v2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/bulkfood_v2b.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/bulkfood_v2prop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/explore1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/explore2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/foo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/schedule1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapter19/schedule2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter19/explore0.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter19/explore0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter19/osconfeed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapter19/osconfeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter19/osconfeed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,22 +26,101 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/chapter19/explore0.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="444">
+                    <caret line="35" column="56" lean-forward="true" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+            <state relative-caret-position="454">
+              <caret line="319" column="13" lean-forward="true" selection-start-line="319" selection-start-column="13" selection-end-line="319" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/chapter19/explore0.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/foo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
+            <state relative-caret-position="304">
+              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/bulkfood_v2b.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/bulkfood_v2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/bulkfood_v1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/schedule2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="127" column="114" selection-start-line="127" selection-start-column="114" selection-end-line="127" selection-end-column="114" />
+              <folding>
+                <element signature="e#846#861#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-516756811/builtins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="831" column="4" selection-start-line="831" selection-start-column="4" selection-end-line="831" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapter19/schedule1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+              <folding>
+                <element signature="e#204#219#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -35,8 +128,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+            <state relative-caret-position="553">
+              <caret line="30" column="26" lean-forward="true" selection-start-line="33" selection-start-column="48" selection-end-line="40" />
               <folding>
                 <element signature="e#191#225#0" expanded="true" />
               </folding>
@@ -47,8 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            <state relative-caret-position="57">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -68,17 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/chapter14/gen_test.py" />
-        <option value="$PROJECT_DIR$/chapter14/sentence_genexp.py" />
-        <option value="$PROJECT_DIR$/chapter14/Arithmetic.py" />
-        <option value="$PROJECT_DIR$/chapter14/aritprog_test.py" />
-        <option value="$PROJECT_DIR$/chapter14/artiprog_v3.py" />
-        <option value="$PROJECT_DIR$/chapter14/filter_gen_test.py" />
-        <option value="$PROJECT_DIR$/chapter14/accu_test.py" />
-        <option value="$PROJECT_DIR$/chapter14/zip_gen_test.py" />
-        <option value="$PROJECT_DIR$/chapter14/prod_gen_test.py" />
-        <option value="$PROJECT_DIR$/chapter14/count_repeat_cycle.py" />
-        <option value="$PROJECT_DIR$/chapter14/comb_gen.py" />
         <option value="$PROJECT_DIR$/chapter14/groupby_test.py" />
         <option value="$PROJECT_DIR$/chapter14/tee_test.py" />
         <option value="$PROJECT_DIR$/chapter14/def_chain.py" />
@@ -116,22 +198,51 @@
         <option value="$PROJECT_DIR$/chapter18/http_charfinder.py" />
         <option value="$PROJECT_DIR$/chapter18/第18章使用asyncio包处理并发.txt" />
         <option value="$PROJECT_DIR$/chapter19/osconfeed.json" />
-        <option value="$PROJECT_DIR$/chapter19/osconfeed.py" />
-        <option value="$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt" />
         <option value="$PROJECT_DIR$/chapter19/explore0.py" />
+        <option value="$PROJECT_DIR$/chapter19/bulkfood_v2prop.py" />
+        <option value="$PROJECT_DIR$/chapter19/blackknight.py" />
+        <option value="$PROJECT_DIR$/chapter19/explore1.py" />
+        <option value="$PROJECT_DIR$/chapter19/explore.py" />
+        <option value="$PROJECT_DIR$/chapter19/explore2.py" />
+        <option value="$PROJECT_DIR$/chapter19/osconfeed.py" />
+        <option value="$PROJECT_DIR$/chapter19/schedule1.py" />
+        <option value="$PROJECT_DIR$/chapter19/schedule2.py" />
+        <option value="$PROJECT_DIR$/chapter19/bulkfood_v1.py" />
+        <option value="$PROJECT_DIR$/chapter19/bulkfood_v2.py" />
+        <option value="$PROJECT_DIR$/chapter19/bulkfood_v2b.py" />
+        <option value="$PROJECT_DIR$/chapter19/foo.py" />
+        <option value="$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="687" />
-    <option name="width" value="1240" />
+    <option name="x" value="834" />
+    <option name="width" value="1086" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fluent_python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fluent_python" type="462c0819:PsiDirectoryNode" />
+              <item name="chapter19" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -159,7 +270,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.explore0">
+  <component name="RunManager" selected="Python tests.Doctests in schedule2">
+    <configuration name="blackknight" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fluent_python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter19" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter19/blackknight.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="coroaverager1" type="PythonConfigurationType" factoryName="Python">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -175,48 +307,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter16/coroaverager1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="explore0" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fluent_python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter19" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter19/explore0.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="flags_asyncio" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fluent_python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter18" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter18/flags_asyncio.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -244,7 +334,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="spinner_asyncio" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="schedule1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -252,11 +342,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter18" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter19" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter18/spinner_asyncio.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter19/schedule1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -265,34 +355,49 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tcp_charfinder" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Doctests in schedule2 (1)" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <module name="fluent_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter18" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter19" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter18/tcp_charfinder.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter19/schedule2.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Doctests in schedule2" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="fluent_python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter19" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter19/schedule2.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.explore0" />
+        <item itemvalue="Python tests.Doctests in schedule2" />
+        <item itemvalue="Python tests.Doctests in schedule2 (1)" />
+        <item itemvalue="Python.schedule1" />
         <item itemvalue="Python.osconfeed" />
-        <item itemvalue="Python.tcp_charfinder" />
-        <item itemvalue="Python.flags_asyncio" />
-        <item itemvalue="Python.spinner_asyncio" />
+        <item itemvalue="Python.blackknight" />
       </list>
     </recent_temporary>
   </component>
@@ -318,35 +423,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Doctests_in_normeq - 2019.04.02 at 07h 40m 29s.xml">
-      <configuration name="Doctests in normeq" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_tombola_runner_py - 2019.04.10 at 14h 54m 52s.xml">
-      <configuration name="pytest in tombola_runner.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_tombola_runner_py - 2019.04.10 at 14h 55m 29s.xml">
-      <configuration name="pytest in tombola_runner.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_coroaverager1 - 2019.04.12 at 15h 02m 02s.xml">
-      <configuration name="Doctests in coroaverager1" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_coroaverager1 - 2019.04.12 at 15h 02m 45s.xml">
-      <configuration name="Doctests in coroaverager1" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_coroaverager1 - 2019.04.12 at 15h 04m 02s.xml">
-      <configuration name="Doctests in coroaverager1" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_coroaverager1 - 2019.04.12 at 15h 34m 59s.xml">
-      <configuration name="Doctests in coroaverager1" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctests_in_coroaverager1 - 2019.04.12 at 15h 35m 19s.xml">
-      <configuration name="Doctests in coroaverager1" configurationId="tests" />
-    </history-entry>
     <history-entry file="Doctests_in_coroaverager1 - 2019.04.12 at 15h 47m 19s.xml">
       <configuration name="Doctests in coroaverager1" configurationId="tests" />
     </history-entry>
     <history-entry file="Doctests_in_coroaverager1 - 2019.04.12 at 15h 48m 06s.xml">
       <configuration name="Doctests in coroaverager1" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2 - 2019.04.16 at 15h 28m 57s.xml">
+      <configuration name="Doctests in schedule2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2 - 2019.04.16 at 15h 30m 13s.xml">
+      <configuration name="Doctests in schedule2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2 - 2019.04.16 at 15h 30m 22s.xml">
+      <configuration name="Doctests in schedule2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2 - 2019.04.16 at 15h 32m 25s.xml">
+      <configuration name="Doctests in schedule2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2 - 2019.04.16 at 15h 33m 05s.xml">
+      <configuration name="Doctests in schedule2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2 - 2019.04.16 at 15h 33m 14s.xml">
+      <configuration name="Doctests in schedule2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2_(1) - 2019.04.16 at 15h 35m 43s.xml">
+      <configuration name="Doctests in schedule2 (1)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_schedule2 - 2019.04.16 at 15h 36m 03s.xml">
+      <configuration name="Doctests in schedule2" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView" selected-index="2">
@@ -359,22 +464,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="550" y="0" width="992" height="832" extended-state="0" />
+    <frame x="834" y="0" width="1086" height="1040" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24267782" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24236642" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4928717" weight="0.22714286" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32855567" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4928717" weight="0.53142226" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32194045" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49898168" weight="0.32929516" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683544" weight="0.16" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50101835" side_tool="true" weight="0.3296582" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.86558044" weight="0.36644593" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.86558044" visible="true" weight="0.3660419" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -406,77 +511,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chapter14/14-2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/itertools.py" />
-    <entry file="file://$PROJECT_DIR$/chapter14/第14章可迭代的对象,迭代器和生成器.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="434" column="25" selection-start-line="434" selection-start-column="25" selection-end-line="434" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/iter_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda3/Lib/random.py" />
-    <entry file="file://$PROJECT_DIR$/chapter14/def_chain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/tee_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/groupby_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/comb_gen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/count_repeat_cycle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="23" column="101" selection-start-line="23" selection-start-column="101" selection-end-line="23" selection-end-column="101" />
-          <folding>
-            <element signature="e#208#224#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapter14/accu_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/builtins.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2036615904/sys.py" />
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-516756811/builtins.py" />
     <entry file="file://$PROJECT_DIR$/chapter15/第15章 上下文管理器和else块.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
@@ -674,16 +709,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter18/http_charfinder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-          <folding>
-            <element signature="e#169#183#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter18/http_charfinder.py" />
     <entry file="file://$PROJECT_DIR$/chapter18/tcp_charfinder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -691,34 +717,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt">
+    <entry file="file://$PROJECT_DIR$/chapter19/blackknight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+        <state relative-caret-position="554">
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/bulkfood_v2prop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="42" column="72" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/explore1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+          <folding>
+            <element signature="e#206#233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/explore2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#220#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python37/Lib/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="273" column="4" selection-start-line="273" selection-start-column="4" selection-end-line="273" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python37/Lib/genericpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="57">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter19/osconfeed.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+        <state relative-caret-position="553">
+          <caret line="30" column="26" lean-forward="true" selection-start-line="33" selection-start-column="48" selection-end-line="40" />
           <folding>
             <element signature="e#191#225#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/schedule1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+          <folding>
+            <element signature="e#204#219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-516756811/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="831" column="4" selection-start-line="831" selection-start-column="4" selection-end-line="831" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/schedule2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="127" column="114" selection-start-line="127" selection-start-column="114" selection-end-line="127" selection-end-column="114" />
+          <folding>
+            <element signature="e#846#861#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/bulkfood_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/bulkfood_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/bulkfood_v2b.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/foo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chapter19/explore0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
+        <state relative-caret-position="444">
+          <caret line="35" column="56" lean-forward="true" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter19/第19章动态属性和特性.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="319" column="13" lean-forward="true" selection-start-line="319" selection-start-column="13" selection-end-line="319" selection-end-column="13" />
         </state>
       </provider>
     </entry>
