@@ -23,3 +23,41 @@ LineItem系列示例,把quantity特性工厂函数重构成Quantity描述符类
 托管属性:托管类中由描述符实例处理的公开属性,值存储在储存属性中.也就是说,描述符实例和储存属性为托管属性建立了基础.
 Quantity实例是LineItem类的类属性.
 示例20-1 bulkfood_v3.py:
+编写__set__方法时,要记住self和instance参数的意思:
+self是描述符实例,instance是托管实例.
+管理实例属性的描述符应该把值存储在托管实例中.
+错误的做法:把各个托管属性的值直接存在描述符实例中:
+self.__dict__[self.storage_name] = value
+应为    instance.__dict__[self.storage_name] = value
+self是描述符实例,其实是托管类的类属性.同一时刻,内存中可能有几千个LineItem实例,不过只会有两个描述符实例:LineItem.weight和LineItem.price
+因此,存储在描述符实例中的数据,其实会变成LineItem类的类属性,从而由全部LineItem实例共享
+示例20-1有个缺点,在托管类的定义体中实例化描述符时要重复输入属性的名称.
+实现:
+class LineItem:
+    weight = Quantity()
+    price = Quantity()
+可问题是,正如第8章所说的,赋值语句右手边的表达式先执行,而此时变量还不存在.
+Quantity()表达式计算的结果是创建描述符实例,而此时Quantity类中的代码无法猜出要把描述符绑定给哪个变量
+因此,示例20-1必须明确指明各个Quantity实例的名称.
+这样不仅麻烦,还很危险:如果程序员直接复制粘贴代码而忘了编辑名称,
+比如写成price = Quantity('weight'),那么程序的行为就会大错特错,设置price的值时会覆盖weight的值
+
+
+不太优雅但是可行的方案(更好的方案是使用装饰器或元类)
+20.1.2 LineItem类第4版:自动获取储存属性的名称
+将每个Quantity实例的storage_name属性生成一个独一无二的字符串.
+为了生成storage_name,以'_Quantity#'为前缀,然后在后面拼接一个整数:Quantity.__counter类属性的当前值,每次把一个新的Quantity描述符实例
+依附到类上,都会递增这个值.
+在前缀中使用井号能避免storage_name与用户使用点号创建的属性冲突,因为nutmeg._Quantity#0是无效的Python句法.
+但是,内置的getattr和setattr函数可以使用这种"无效"的标识符获取和设置属性,此外也可以直接处理实例属性__dict__.
+示例20-2 bulkfood_v4.py
+这里可以使用内置的高阶函数getattr和setattr存取值,无需使用instance.__dict__,因为托管属性和储存属性的名称不同,
+所以把储存属性传给getattr函数不会触发描述符,不会像20-1那样出现无限递归.
+如果想使用Python矫正名称的约定方式(例如_LineItem__quantity0),
+要知道托管类(即LineItem)的名称,可是,解释器要先运行类的定义体才能构建类,因此创建描述符实例时得不到那个信息.
+不过,对这个示例来说,为了防止不小心被子类覆盖,不用包含托管类的名称,因为每次实例化新的描述符,描述符类的__counter属性都会递增,
+从而确保每个托管类的每个储存属性的名称都是独一无二的
+注意,__get__方法有三个参数:self,instance和owner.
+owner参数是托管类(如LineItem)的引用,通过描述符从托管类中获取属性时用得到.
+如果使用LineItem.weight从类中获取托管属性(以weight为例),描述符的__get__方法接收到的instance参数值是None.
+因此,下述控制台会话才会抛出AttributeError异常:
