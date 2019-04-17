@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06301e33-41e4-42ac-857d-04a6e7138987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapter20/bulkfood_v4b.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter20/bulkfood_v4c.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter20/bulkfood_v4prop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter20/bulkfood_v5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter20/descriptor_sample.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter20/descriptorkinds.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter20/method_is_descriptor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapter20/model_v5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fluent_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fluent_python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapter20/bulkfood_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter20/bulkfood_v4.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chapter20/第20章属性描述符.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chapter20/第20章属性描述符.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chapter20/第20章属性描述符.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="767">
-              <caret line="248" column="55" selection-start-line="248" selection-start-column="55" selection-end-line="248" selection-end-column="55" />
+            <state relative-caret-position="842">
+              <caret line="261" selection-start-line="261" selection-end-line="261" />
             </state>
           </provider>
         </entry>
@@ -39,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter20/method_is_descriptor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
+            <state relative-caret-position="608">
               <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
             </state>
           </provider>
@@ -48,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chapter20/descriptorkinds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
+            <state relative-caret-position="2033">
               <caret line="107" column="62" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
             </state>
           </provider>
@@ -124,9 +113,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="893" />
-    <option name="y" value="5" />
-    <option name="width" value="1032" />
+    <option name="x" value="763" />
+    <option name="width" value="1160" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
@@ -364,7 +352,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="893" y="5" width="1032" height="1040" extended-state="0" />
+    <frame x="763" y="0" width="1160" height="1040" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24144869" />
       <window_info id="Structure" order="1" weight="0.24949698" />
@@ -730,18 +719,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter20/seletest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python/Python37/Lib/inspect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4617" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/chapter20/seletest.py" />
+    <entry file="file://D:/Python/Python37/Lib/inspect.py" />
     <entry file="file://$PROJECT_DIR$/chapter20/descriptor_sample.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -749,24 +728,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter20/descriptorkinds.py">
+    <entry file="file://$PROJECT_DIR$/chapter20/第20章属性描述符.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="107" column="62" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
+        <state relative-caret-position="842">
+          <caret line="261" selection-start-line="261" selection-end-line="261" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chapter20/method_is_descriptor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
+        <state relative-caret-position="608">
           <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapter20/第20章属性描述符.txt">
+    <entry file="file://$PROJECT_DIR$/chapter20/descriptorkinds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="248" column="55" selection-start-line="248" selection-start-column="55" selection-end-line="248" selection-end-column="55" />
+        <state relative-caret-position="2033">
+          <caret line="107" column="62" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
         </state>
       </provider>
     </entry>
