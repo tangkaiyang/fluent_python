@@ -45,3 +45,12 @@ if __name__ == '__main__':
     cocounts = LineItem('Brazilian cocount', 20, 17.95)
     print(cocounts.weight, cocounts.price)
     print(getattr(cocounts, '_Quantity#0'), getattr(cocounts, '_Quantity#1'))
+    # LineItem.weight
+    """
+    LineItem.weight抛出AttributeError异常,
+    AttributeError: 'NoneType' object has no attribute '_Quantity#0'
+    抛出AttributeError异常时实现__get__方法的方式之一,
+    如果选择这么做,应该修改错误信息,去掉NoneType和_Quantity#0,这是实现细节.
+    改成"'LineItem' class has no such attribute"更好.
+    最好能给出缺少的属性名,但是在这个示例中,描述符不知道托管属性的名称
+    """
