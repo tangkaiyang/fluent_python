@@ -6,7 +6,8 @@
 # @File     : bulkfood_v7.py
 # @Software : PyCharm
 # 示例21-14 有元类的支持,继承model.Entity类即可
-import model_v7 as model
+# import model_v7 as model
+import model_v8 as model
 
 
 class LineItem(model.Entity):  # 1.LineItem是model.Entity的子类

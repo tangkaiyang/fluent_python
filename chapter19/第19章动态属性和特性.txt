@@ -78,7 +78,7 @@ x = Foo('bar')
 x = object_maker(Foo, 'bar')
 示例19-7是FrozenJSON类的另一个版本,把之前的类方法build中的逻辑移到了__new__方法中.
 explore2.py
-__new__方法的第一个参数是类,因为创建的对象通常是那个类的实例.所以,在FrozenJSON.__new__方法中,super().__new__(cls)表达式会调用
+__new__方法的第一个参数是类,因为创建的对象通常是那个类的实例.所以,在FrozenJSON.__new__方法中,super().__new__(mcs)表达式会调用
 object.__new__(FrozenJSON),而object类构建的实例其实是FrozenJSON实例,即那个实例的__class__属性存储的是FrozenJSON类的引用.
 不过真正的构建操作是由解释器调用C语言实现的object.__new__方法执行
 
