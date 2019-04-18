@@ -62,3 +62,142 @@ Python解释器什么时候计算各个代码块
 从这个意义上理解,类的定义体属于"顶层代码",因为它在导入时运行.
 
 理解计算时间的练习
+01,场景1的解答
+import evaltime
+<[100]> evalsupport module start # 1.evalsupport模块中的所有顶层代码在导入模块时运行;解释器会编译deco_alpha函数,但不会执行定义体
+<[400]> MetaAleph body # 2.MetaAleph类的定义体运行了
+<[700]> evalsupport module end
+<[1]> evaltime module start
+<[2]> ClassOne body # 3.每个类的定义体都执行了...
+<[6]> ClassTwo body # 4...包括嵌套的类
+<[7]> ClassThree body
+<[200]> deco_alpha # 5.先计算被装饰的类ClassThree的定义体
+<[9]> ClassFour body
+<[14]> evaltime module end # 6.evaltime模块是导入的,因此不会运行if __name__ == '__main__':块
+场景1注意点:
+1)这个场景由简单的import evaltime语句触发
+2)解释器会执行所导入模块及其以来(evalsupport)中的每个类定义体
+3)解释器会先计算类的定义体,然后,调用依附在类上的装饰器函数,这是合理的行为,因为必须先构建类对象,装饰器才有类对象可处理
+4)在这个场景中,只运行了一个用户定义的函数或方法---deco_alpha装饰器
+02,场景2的解答:
+python evaltime.py
+<[100]> evalsupport module start
+<[400]> MetaAleph body
+<[700]> evalsupport module end
+<[1]> evaltime module start
+<[2]> ClassOne body
+<[6]> ClassTwo body
+<[7]> ClassThree body
+<[200]> deco_alpha
+<[9]> ClassFour body # 输出与场景一相同
+<[11]> ClassOne tests ..............................
+<[3]> ClassOne.__init__ # 2.类的标准行为
+<[5]> ClassOne.method_x
+<[12]> ClassThree tests ..............................
+<[300]> deco_alpha:inner_1 # 3.deco_alpha装饰器修改了ClassThree.method_y方法,因此调用three.method_y()时会运行inner_1函数的定义体
+<[13]> ClassFour test ..............................
+<[10]> ClassFour.method_y
+<[14]> evaltime module end
+<[4]> ClassOne.__del__ # 只有程序结束时,绑定在全局变量one的ClassOne实例才会被垃圾回收程序处理
+场景2主要想说明的是,类装饰器可能对子类没有影响.
+示例21-6中,我们把ClassFour定义为ClassThree的子类.ClassThree类上依附的@deco_alpha装饰器把method_y方法替换掉了,
+但是对ClassFour类根本没有影响.当然,如果ClassFour.method_y方法使用super(...)调用ClassThree.method_y方法,我们便会看到
+装饰器起作用,执行inner_1函数.
+
+
+与此不同的是,如果想定制整个类层次结构,而不是一次只定制一个类,使用元类更高效
+21.4 元类基础知识
+元类是制造类的工厂,不过不是函数,而是类.
+元类的构建类的类
+根据Python对象模型,类是对象,因此类肯定是另外某个类的实例.
+默认情况下,Python中的类是type类的实例.也就是说,
+type是大多数内置的类和用户定义的类的元类
+'spam'.__class__
+Out[4]: str
+str.__class__
+Out[5]: type
+from bulkfood_v6 import  LineItem
+LineItem.__class__
+Out[7]: type
+type.__class__
+Out[8]: type
+为了避免无限回溯,type是其自身的实例
+注意,我没有说str或LineItem继承自type.
+我的意思是,str和LineItem是type的实例.这两个类是object的子类.
+str,type和LineItem是object的子类.
+而str,object和LineItem是type的实例,因为他们都是类.
+!object类和type类之间的关系很独特:object是type的实例,而type是object的子类.
+!这种关系很"神奇",无法使用Python代码表述,因为定义其中一个之前另一个必须存在.
+!type是自身的实例这一点也很神奇
+除了type,标准库中还有一些别的元类,例如ABCMeta和Enum.
+collections.Iterable所属的类是abc.ABCMeta.
+Iterable是抽象类,而ABCMeta不是--不管怎样Iterable是ABCMeta的实例
+import collections
+collections.Iterable.__class__
+Out[10]: abc.ABCMeta
+import abc
+abc.ABCMeta.__class__
+Out[12]: type
+abc.ABCMeta.__mro__
+Out[13]: (abc.ABCMeta, type, object)
+向上追溯,ABCMeta最终所属的类也是type.所有类都直接或间接地是type地实例,不过只有元类同时也是type的子类.
+元类(如ABCMeta)从type类继承了构建类的能力
+所有类都是type的实例,但是元类还是type的子类,因此可以作为制造类的工厂.
+具体来说,元类可以通过实现__init__方法定制实例.元类的__init__方法可以做到类装饰器能做的任何事情,但是作用更大
+
+理解元类计算时间的练习
+示例21-10 evaltime_meta.py
+场景3在Python控制台中以交互的方式导入evaltime_meta.py模块
+<[100]> evalsupport module start
+<[400]> MetaAleph body
+<[700]> evalsupport module end
+<[1]> evaltime_meta module start
+<[2]> ClassThree body
+<[200]> deco_alpha
+<[4]> ClassFour body
+<[6]> ClassFive body
+<[500]> MetaAleph.__init__ # 1.与场景1的关键区别是,创建ClassFive时调用了MetaAleph.__init__方法
+<[9]> ClassSix body
+<[500]> MetaAleph.__init__ # 2.创建ClassFive的子类ClassSix时也调用了MetaAleph.__init__方法
+<[15]> evaltime_meta module end
+Python解释器计算ClassFive类的定义体时没有调用type构建具体的类定义体,而是调用MetaAleph类.
+MetaAleph类,__init__方法中的四个参数:
+self:这是要初始化的类对象(例如ClassFive)
+name,bases,dic:与构建类时传给type的参数一样
+编写元类时,通常把self参数改成cls.清楚表明要构建的实例是类.
+__init__方法的定义体中定义例如inner_2函数,然后将其绑定给cls.method_z.MetaALeph.__init__方法签名中的cls指代要创建的类(
+例如ClassFive).而inner_2函数签名中的self最终是指代我们在创建的类的实例(例如ClassFive类的实例)
+场景4在命令行运行python evaltime_meta.py
+<[100]> evalsupport module start
+<[400]> MetaAleph body
+<[700]> evalsupport module end
+<[1]> evaltime_meta module start
+<[2]> ClassThree body
+<[200]> deco_alpha
+<[4]> ClassFour body
+<[6]> ClassFive body
+<[500]> MetaAleph.__init__
+<[9]> ClassSix body
+<[500]> MetaAleph.__init__
+<[11]> ClassThree tests ..............................
+<[300]> deco_alpha:inner_1 # 1.装饰器依附到ClassThree类上之后,method_y方法被替换成inner_1方法....
+<[12]> ClassFour tests ..............................
+<[5]> ClassFour.method_y # 2.虽然ClassFour是ClassThree的子类,但是没有依附装饰器的ClassFour类却不受影响
+<[13]> ClassFive tests ..............................
+<[7]> ClassFive.__init__
+<[600]> MetaAleph.__init__:inner_2 # 3.MetaAleph类的__init__方法把ClassFive.method_z方法替换成inner_2函数
+<[14]> ClassSix tests ..............................
+<[7]> ClassFive.__init__
+<[600]> MetaAleph.__init__:inner_2 # 4.ClassFive的子类ClassSix也是一样,method_z方法被替换成inner_2函数
+<[15]> evaltime_meta module end
+注意,ClassSix类没有直接引用MetaAleph类,但是却收到了影响,因为它是ClassFive的子类,进而也是MetaAleph类的实例,
+所以由MetaAleph.__init__方法初始化
+!!如果想进一步定制类,可以在源类中实现__new__方法.不过通常情况下实现__init__方法就够了
+
+
+创建一个元类,让描述符以最佳的方式自动创建储存属性的名称
+21.5 定制描述符的元类
+回到LineItem系列示例.如果用户完全不知道描述符或元类,直接继承库提供的类就能满足需求,那该多好.
+示例21-14 bulkfood_v7.py
+示例21-15 model_v7.py
+辅助模块model_v7.py比model_v6.py难理解,但是用户级别的代码更简单:只需继承model_v7.Entity类,Validated字段就能自动获取储存属性的名称.
